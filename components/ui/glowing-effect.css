@@ -4,58 +4,8 @@
     --black: #000000;
 }
 
-/* Utility classes required by glowing-effect.js */
-.absolute {
-    position: absolute;
-}
-
-.inset-0 {
-    inset: 0;
-}
-
-.-inset-px {
-    inset: -1px;
-}
-
-.pointer-events-none {
-    pointer-events: none;
-}
-
-.opacity-0 {
-    opacity: 0;
-}
-
-.opacity-100 {
-    opacity: 1;
-}
-
-.transition-opacity {
-    transition: opacity 0.3s ease;
-}
-
-.hidden {
-    display: none;
-}
-
-.\!block {
-    display: block !important;
-}
-
-.\!hidden {
-    display: none !important;
-}
-
-.border {
-    border-width: 1px;
-    border-style: solid;
-}
-
-.border-white {
-    border-color: white;
-}
-
-/* Glowing effect wrapper */
 .glowing-effect-wrapper {
+    /* Ensure the wrapper is positioned correctly relative to its parent */
     position: absolute;
     inset: 0;
     pointer-events: none;
@@ -73,9 +23,6 @@
     border-radius: inherit;
     width: 100%;
     height: 100%;
-    /* GPU acceleration for smooth animations */
-    will-change: transform;
-    transform: translateZ(0);
 }
 
 .glow::after {
@@ -83,6 +30,7 @@
     position: absolute;
     border-radius: inherit;
 
+    /* inset: calc(-1 * var(--glowingeffect-border-width)); */
     top: calc(-1 * var(--glowingeffect-border-width));
     right: calc(-1 * var(--glowingeffect-border-width));
     bottom: calc(-1 * var(--glowingeffect-border-width));
@@ -94,24 +42,25 @@
     background-attachment: fixed;
 
     opacity: var(--active);
-    transition: opacity 300ms ease-out;
+    transition: opacity 300ms;
 
-    /* Masking Logic - use exclude to show only the border */
+    /* Masking Logic */
     mask-clip: padding-box, border-box;
     -webkit-mask-clip: padding-box, border-box;
 
-    mask-composite: exclude;
-    -webkit-mask-composite: xor;
+    mask-composite: intersect;
+    -webkit-mask-composite: source-in;
+    /* Frequently equivalent in WebKit for this purpose */
 
     mask-image:
-        linear-gradient(#fff, #fff),
+        linear-gradient(#0000, #0000),
         conic-gradient(from calc((var(--start) - var(--spread)) * 1deg),
             transparent 0deg,
             #fff,
             transparent calc(var(--spread) * 2deg));
 
     -webkit-mask-image:
-        linear-gradient(#fff, #fff),
+        linear-gradient(#0000, #0000),
         conic-gradient(from calc((var(--start) - var(--spread)) * 1deg),
             transparent 0deg,
             #fff,

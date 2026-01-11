@@ -644,47 +644,52 @@ body {
 
     /* NAV LINKS - Full screen drawer (HIDDEN by default) */
     .nav-links {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        width: 100vw;
-        height: 100vh;
-        height: 100dvh;
-        background: rgba(3, 3, 5, 0.98);
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+        width: 100vw !important;
+        height: 100vh !important;
+        height: 100dvh !important;
+        background: rgba(3, 3, 5, 0.98) !important;
         backdrop-filter: blur(30px);
         -webkit-backdrop-filter: blur(30px);
-        display: none;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 0.75rem;
-        padding: 2rem;
-        padding-top: 5rem;
-        z-index: 9999;
+        display: none !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        align-items: center !important;
+        gap: 0.75rem !important;
+        padding: 2rem !important;
+        padding-top: 5rem !important;
+        z-index: 9999 !important;
+        overflow-y: auto;
     }
 
     .nav-links.active {
-        display: flex;
+        display: flex !important;
     }
 
     .nav-link {
-        padding: 1rem 2rem;
-        font-size: 1.1rem;
-        background: rgba(255, 255, 255, 0.08);
-        border: 1px solid rgba(255, 255, 255, 0.12);
-        border-radius: 16px;
+        position: relative !important;
+        padding: 1rem 2rem !important;
+        font-size: 1.1rem !important;
+        background: rgba(255, 255, 255, 0.08) !important;
+        border: 1px solid rgba(255, 255, 255, 0.12) !important;
+        border-radius: 16px !important;
         white-space: nowrap;
-        color: rgba(255, 255, 255, 0.9);
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-        width: 100%;
-        max-width: 280px;
-        justify-content: flex-start;
-        text-decoration: none;
+        color: rgba(255, 255, 255, 0.9) !important;
+        display: flex !important;
+        align-items: center !important;
+        gap: 1rem !important;
+        width: 100% !important;
+        max-width: 280px !important;
+        justify-content: flex-start !important;
+        text-decoration: none !important;
         transition: all 0.3s ease;
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: none !important;
     }
 
     .nav-link img {

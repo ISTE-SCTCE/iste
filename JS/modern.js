@@ -34,13 +34,43 @@ document.addEventListener("DOMContentLoaded", () => {
     const menuToggle = document.querySelector('.menu-toggle');
     const navLinks = document.querySelector('.nav-links');
     const navOverlay = document.querySelector('.nav-overlay');
-    
+    const glassNav = document.querySelector('.glass-nav'); // Parent container for desktop
+    const navPebble = document.querySelector('.nav-pebble'); // Reference for inserting back
+
+    // TELEPORT LOGIC: Move nav-links to body on mobile to avoid stacking context issues
+    const handleNavTeleport = () => {
+        const isMobileView = window.innerWidth <= 900; // Match CSS media query
+        if (isMobileView) {
+            // Move to body if not already there
+            if (navLinks && navLinks.parentNode !== document.body) {
+                document.body.appendChild(navLinks);
+            }
+        } else {
+            // Move back to header if not already there
+            if (navLinks && navLinks.parentNode !== glassNav && glassNav) {
+                // Insert before pebble or append if pebble missing
+                if (navPebble) {
+                    glassNav.insertBefore(navLinks, navPebble);
+                } else {
+                    glassNav.appendChild(navLinks);
+                }
+            }
+        }
+    };
+
+    // Run on load and resize
+    handleNavTeleport();
+    window.addEventListener('resize', handleNavTeleport);
+
     if (menuToggle && navLinks) {
-        const toggleMenu = () => {
+        const toggleMenu = (e) => {
+            // Prevent default if triggered by link to stop immediate navigation before closing
+            if (e && e.type === 'click' && e.target.tagName !== 'A') e.preventDefault();
+
             menuToggle.classList.toggle('active');
             navLinks.classList.toggle('active');
             if (navOverlay) navOverlay.classList.toggle('active');
-            
+
             // Lock/unlock body scroll
             if (navLinks.classList.contains('active')) {
                 document.body.style.overflow = 'hidden';
@@ -48,14 +78,14 @@ document.addEventListener("DOMContentLoaded", () => {
                 document.body.style.overflow = '';
             }
         };
-        
+
         menuToggle.addEventListener('click', toggleMenu);
-        
+
         // Close menu when clicking overlay
         if (navOverlay) {
             navOverlay.addEventListener('click', toggleMenu);
         }
-        
+
         // Close menu when clicking a nav link
         navLinks.querySelectorAll('.nav-link').forEach(link => {
             link.addEventListener('click', () => {
@@ -64,7 +94,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             });
         });
-        
+
         // Close menu on escape key
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && navLinks.classList.contains('active')) {

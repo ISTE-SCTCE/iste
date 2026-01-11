@@ -11,9 +11,9 @@ export class GlowingEffect {
      * @param {string} [options.variant="default"] - "default" or "white"
      * @param {boolean} [options.glow=false] - Whether the glow is active
      * @param {string} [options.className=""] - Additional classes
-     * @param {number} [options.movementDuration=2] - Duration of the movement animation
+     * @param {number} [options.movementDuration=0.5] - Duration of the movement animation
      * @param {number} [options.borderWidth=1] - Width of the border
-     * @param {boolean} [options.disabled=true] - Whether the effect is disabled (Note: logic inverted in original? No, original `disabled` defaults to true? Let's check.)
+     * @param {boolean} [options.disabled=true] - Whether the effect is disabled
      */
     constructor(element, options = {}) {
         if (!element) {
@@ -30,15 +30,18 @@ export class GlowingEffect {
             variant: "default",
             glow: false,
             className: "",
-            movementDuration: 2,
+            movementDuration: 0.5,
             borderWidth: 1,
-            disabled: true, // Matches React default
+            disabled: true,
             ...options,
         };
 
         this.lastPosition = { x: 0, y: 0 };
         this.animationFrameId = 0;
-        this.container = null; // Will be created
+        this.container = null;
+        this.rect = null;
+        this.isVisible = false;
+        this.activeAnimation = null;
 
         this.init();
     }
@@ -46,32 +49,27 @@ export class GlowingEffect {
     init() {
         this.render();
         this.bindEvents();
+        this.updateRect();
     }
 
     render() {
-        // Clear existing content just in case
         this.element.innerHTML = "";
         this.element.classList.add("glowing-effect-wrapper");
 
         // 1. Create the Border Div
-        // React: className={cn("pointer-events-none absolute -inset-px hidden rounded-[inherit] border opacity-0 transition-opacity", glow && "opacity-100", variant === "white" && "border-white", disabled && "!block")}
         const borderDiv = document.createElement("div");
         borderDiv.className = `pointer-events-none absolute -inset-px hidden rounded-inherit border opacity-0 transition-opacity`;
 
-        // Apply conditional classes manually
         if (this.options.glow) borderDiv.classList.add("opacity-100");
         if (this.options.variant === "white") borderDiv.classList.add("border-white");
         if (this.options.disabled) borderDiv.classList.add("!block");
 
         // 2. Create the Container Div
-        // React: ref={containerRef} ... className={cn("pointer-events-none absolute inset-0 rounded-[inherit] opacity-100 transition-opacity", glow && "opacity-100", blur > 0 && "blur-[var(--blur)] ", className, disabled && "!hidden")}
         const containerDiv = document.createElement("div");
         this.container = containerDiv;
         containerDiv.className = `pointer-events-none absolute inset-0 rounded-inherit opacity-100 transition-opacity ${this.options.className || ""}`;
 
         if (this.options.glow) containerDiv.classList.add("opacity-100");
-        // blur logic is handled via CSS variable, but Tailwind need class too? 
-        // React code: `blur > 0 && "blur-[var(--blur)] "`
         if (this.options.blur > 0) containerDiv.classList.add("blur-[var(--blur)]");
         if (this.options.disabled) containerDiv.classList.add("!hidden");
 
@@ -79,12 +77,6 @@ export class GlowingEffect {
         this.updateStyles();
 
         // 3. Create the Glow Child Div
-        // React: className={cn("glow", "rounded-[inherit]", 'after:content-[""] ...')}
-        // The complex tailwind classes will be moved to CSS file to keep JS clean, or we keep them if we assume Tailwind is present.
-        // The prompt asks for "Tailwind-compatible class names" but also "glowing-effect.css". 
-        // Replicating the exact arbitraries in CSS is better for "pure" web components, but sticking to Tailwind as requested is fine.
-        // Since the prompt explicitly asks for /components/ui/glowing-effect.css, I will move the complex `after:` styles there or use a custom class.
-        // The provided React code uses A LOT of arbitrary variants. It's cleaner to put these in a CSS class `.glow`.
         const glowDiv = document.createElement("div");
         glowDiv.className = "glow rounded-inherit";
 
@@ -97,7 +89,6 @@ export class GlowingEffect {
         if (!this.container) return;
 
         const { blur, spread, variant, borderWidth } = this.options;
-
         const repeatingConicGradientTimes = 5;
         const gradient =
             variant === "white"
@@ -128,19 +119,20 @@ export class GlowingEffect {
         this.container.style.setProperty("--gradient", gradient);
     }
 
-    handleMove(e) {
-        if (!this.container) return;
+    updateRect() {
+        if (this.container) {
+            this.rect = this.container.getBoundingClientRect();
+        }
+    }
 
-        // Check if we need to cancel previous frame
+    handleMove(e) {
+        if (!this.container || !this.isVisible || !this.rect) return;
+
         if (this.animationFrameId) {
             cancelAnimationFrame(this.animationFrameId);
         }
 
         this.animationFrameId = requestAnimationFrame(() => {
-            const element = this.container;
-            if (!element) return;
-
-            const { left, top, width, height } = element.getBoundingClientRect();
             const mouseX = e?.x ?? this.lastPosition.x;
             const mouseY = e?.y ?? this.lastPosition.y;
 
@@ -148,6 +140,7 @@ export class GlowingEffect {
                 this.lastPosition = { x: mouseX, y: mouseY };
             }
 
+            const { left, top, width, height } = this.rect;
             const center = [left + width * 0.5, top + height * 0.5];
             const distanceFromCenter = Math.hypot(
                 mouseX - center[0],
@@ -156,7 +149,7 @@ export class GlowingEffect {
             const inactiveRadius = 0.5 * Math.min(width, height) * this.options.inactiveZone;
 
             if (distanceFromCenter < inactiveRadius) {
-                element.style.setProperty("--active", "0");
+                this.container.style.setProperty("--active", "0");
                 return;
             }
 
@@ -167,14 +160,14 @@ export class GlowingEffect {
                 mouseY > top - proximity &&
                 mouseY < top + height + proximity;
 
-            element.style.setProperty("--active", isActive ? "1" : "0");
+            this.container.style.setProperty("--active", isActive ? "1" : "0");
 
             if (!isActive) return;
 
             const currentAngle =
-                parseFloat(element.style.getPropertyValue("--start")) || 0;
+                parseFloat(this.container.style.getPropertyValue("--start")) || 0;
 
-            let targetAngle =
+            const targetAngle =
                 (180 * Math.atan2(mouseY - center[1], mouseX - center[0])) /
                 Math.PI +
                 90;
@@ -182,27 +175,48 @@ export class GlowingEffect {
             const angleDiff = ((targetAngle - currentAngle + 180) % 360) - 180;
             const newAngle = currentAngle + angleDiff;
 
-            // Use motion animate
             if (this.activeAnimation) {
                 this.activeAnimation.stop();
             }
 
-            this.activeAnimation = animate(currentAngle, newAngle, {
-                duration: this.options.movementDuration,
-                ease: [0.16, 1, 0.3, 1],
-                onUpdate: (value) => {
-                    this.container.style.setProperty("--start", String(value));
-                },
-            });
+            // Optimize for speed if movementDuration is low
+            if (this.options.movementDuration <= 0.1) {
+                this.container.style.setProperty("--start", String(newAngle));
+            } else {
+                this.activeAnimation = animate(currentAngle, newAngle, {
+                    duration: this.options.movementDuration,
+                    ease: "linear",
+                    onUpdate: (value) => {
+                        this.container.style.setProperty("--start", String(value));
+                    },
+                });
+            }
         });
     }
 
     bindEvents() {
         if (this.options.disabled) return;
 
-        this.handleScroll = () => this.handleMove();
+        this.handleResize = () => this.updateRect();
+        this.handleScroll = () => {
+            this.updateRect();
+            this.handleMove();
+        };
         this.handlePointerMove = (e) => this.handleMove(e);
 
+        // Use IntersectionObserver to only update when visible
+        this.observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                this.isVisible = entry.isIntersecting;
+                if (this.isVisible) {
+                    this.updateRect();
+                }
+            });
+        }, { threshold: 0 });
+
+        this.observer.observe(this.element);
+
+        window.addEventListener("resize", this.handleResize, { passive: true });
         window.addEventListener("scroll", this.handleScroll, { passive: true });
         document.body.addEventListener("pointermove", this.handlePointerMove, { passive: true });
     }
@@ -211,6 +225,10 @@ export class GlowingEffect {
         if (this.animationFrameId) {
             cancelAnimationFrame(this.animationFrameId);
         }
+        if (this.observer) {
+            this.observer.disconnect();
+        }
+        window.removeEventListener("resize", this.handleResize);
         window.removeEventListener("scroll", this.handleScroll);
         document.body.removeEventListener("pointermove", this.handlePointerMove);
     }

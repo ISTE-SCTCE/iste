@@ -24,7 +24,7 @@ function initGlowingEffect() {
             proximity: 64,
             inactiveZone: 0.01,
             borderWidth: 2,
-            movementDuration: 1.2
+            movementDuration: 0.2
         });
     });
 }

@@ -1,16 +1,76 @@
 {
   "rewrites": [
-    { "source": "/", "destination": "/HTML/index.html" },
-    { "source": "/index.html", "destination": "/HTML/index.html" },
-    { "source": "/execom.html", "destination": "/HTML/execom.html" },
-    { "source": "/forums.html", "destination": "/HTML/forums.html" },
-    { "source": "/forum-cs.html", "destination": "/HTML/forum-cs.html" },
-    { "source": "/forum-ece.html", "destination": "/HTML/forum-ece.html" },
-    { "source": "/forum-mechanical.html", "destination": "/HTML/forum-mechanical.html" },
-    { "source": "/forum-swas.html", "destination": "/HTML/forum-swas.html" },
-    { "source": "/join.html", "destination": "/HTML/join.html" },
-    { "source": "/iste.html", "destination": "/HTML/iste.html" },
-    { "source": "/registration.html", "destination": "/HTML/registration.html" },
-    { "source": "/workshop.html", "destination": "/HTML/workshop.html" }
+    {
+      "source": "/",
+      "destination": "/HTML/index.html"
+    },
+    {
+      "source": "/index.html",
+      "destination": "/HTML/index.html"
+    },
+    {
+      "source": "/contact.html",
+      "destination": "/HTML/contact.html"
+    },
+    {
+      "source": "/events.html",
+      "destination": "/HTML/events.html"
+    },
+    {
+      "source": "/execom.html",
+      "destination": "/HTML/execom.html"
+    },
+    {
+      "source": "/execom-call.html",
+      "destination": "/HTML/execom-call.html"
+    },
+    {
+      "source": "/forums.html",
+      "destination": "/HTML/forums.html"
+    },
+    {
+      "source": "/forum-cs.html",
+      "destination": "/HTML/forum-cs.html"
+    },
+    {
+      "source": "/forum-ece.html",
+      "destination": "/HTML/forum-ece.html"
+    },
+    {
+      "source": "/forum-genesis.html",
+      "destination": "/HTML/forum-genesis.html"
+    },
+    {
+      "source": "/forum-mechanical.html",
+      "destination": "/HTML/forum-mechanical.html"
+    },
+    {
+      "source": "/forum-swas.html",
+      "destination": "/HTML/forum-swas.html"
+    },
+    {
+      "source": "/gallery.html",
+      "destination": "/HTML/gallery.html"
+    },
+    {
+      "source": "/iste.html",
+      "destination": "/HTML/iste.html"
+    },
+    {
+      "source": "/join.html",
+      "destination": "/HTML/join.html"
+    },
+    {
+      "source": "/registration.html",
+      "destination": "/HTML/registration.html"
+    },
+    {
+      "source": "/updates.html",
+      "destination": "/HTML/updates.html"
+    },
+    {
+      "source": "/workshop.html",
+      "destination": "/HTML/workshop.html"
+    }
   ]
 }

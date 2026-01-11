@@ -28,9 +28,50 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     // Auto-hide navigation logic REMOVED to keep nav always visible as per requirements.
-    // window.addEventListener('scroll', ...);
+    // window.addEventListener('scroll', ...');
 
-    // Mobile Menu Toggle logic REMOVED (No hamburger menu)
+    // Mobile Menu Toggle (Hamburger)
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    const navOverlay = document.querySelector('.nav-overlay');
+    
+    if (menuToggle && navLinks) {
+        const toggleMenu = () => {
+            menuToggle.classList.toggle('active');
+            navLinks.classList.toggle('active');
+            if (navOverlay) navOverlay.classList.toggle('active');
+            
+            // Lock/unlock body scroll
+            if (navLinks.classList.contains('active')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = '';
+            }
+        };
+        
+        menuToggle.addEventListener('click', toggleMenu);
+        
+        // Close menu when clicking overlay
+        if (navOverlay) {
+            navOverlay.addEventListener('click', toggleMenu);
+        }
+        
+        // Close menu when clicking a nav link
+        navLinks.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                if (navLinks.classList.contains('active')) {
+                    toggleMenu();
+                }
+            });
+        });
+        
+        // Close menu on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && navLinks.classList.contains('active')) {
+                toggleMenu();
+            }
+        });
+    }
 
     // 2. Glass Pebble Navigation
     const nav = document.querySelector('.glass-nav');

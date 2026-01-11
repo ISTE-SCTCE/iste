@@ -4,8 +4,58 @@
     --black: #000000;
 }
 
+/* Utility classes required by glowing-effect.js */
+.absolute {
+    position: absolute;
+}
+
+.inset-0 {
+    inset: 0;
+}
+
+.-inset-px {
+    inset: -1px;
+}
+
+.pointer-events-none {
+    pointer-events: none;
+}
+
+.opacity-0 {
+    opacity: 0;
+}
+
+.opacity-100 {
+    opacity: 1;
+}
+
+.transition-opacity {
+    transition: opacity 0.3s ease;
+}
+
+.hidden {
+    display: none;
+}
+
+.\!block {
+    display: block !important;
+}
+
+.\!hidden {
+    display: none !important;
+}
+
+.border {
+    border-width: 1px;
+    border-style: solid;
+}
+
+.border-white {
+    border-color: white;
+}
+
+/* Glowing effect wrapper */
 .glowing-effect-wrapper {
-    /* Ensure the wrapper is positioned correctly relative to its parent */
     position: absolute;
     inset: 0;
     pointer-events: none;
@@ -46,15 +96,13 @@
     opacity: var(--active);
     transition: opacity 300ms ease-out;
 
-    /* Masking Logic - FIXED: use exclude to show only the border */
+    /* Masking Logic - use exclude to show only the border */
     mask-clip: padding-box, border-box;
     -webkit-mask-clip: padding-box, border-box;
 
-    /* Use exclude to subtract inner area, leaving only the border visible */
     mask-composite: exclude;
     -webkit-mask-composite: xor;
 
-    /* Opaque mask for the inner area, conic gradient for the rotating highlight */
     mask-image:
         linear-gradient(#fff, #fff),
         conic-gradient(from calc((var(--start) - var(--spread)) * 1deg),

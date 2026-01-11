@@ -525,29 +525,26 @@ body {
     }
 
     /* ================================================
-       FLOATING PILL NAVBAR - AURA STYLE
+       MOBILE NAVBAR - FULL WIDTH GLASS STYLE
        ================================================ */
     .glass-header {
         position: fixed;
-        top: 1rem;
+        top: 0.75rem;
         left: 50%;
         transform: translateX(-50%);
-        width: auto;
-        max-width: 92%;
+        width: calc(100% - 1.5rem);
+        max-width: calc(100% - 1.5rem);
         height: auto;
         border-radius: 999px;
         /* Full pill shape */
-        background: linear-gradient(135deg, 
-            rgba(45, 25, 15, 0.95) 0%, 
-            rgba(90, 50, 30, 0.9) 40%, 
-            rgba(70, 35, 20, 0.95) 100%);
+        background: rgba(10, 10, 15, 0.85);
         backdrop-filter: blur(20px);
         -webkit-backdrop-filter: blur(20px);
-        border: 1px solid rgba(255, 180, 100, 0.15);
-        box-shadow: 
+        border: 1px solid rgba(112, 0, 223, 0.2);
+        box-shadow:
             0 8px 32px rgba(0, 0, 0, 0.4),
             0 2px 8px rgba(0, 0, 0, 0.2),
-            inset 0 1px 0 rgba(255, 200, 150, 0.1);
+            inset 0 1px 0 rgba(255, 255, 255, 0.05);
         padding: 0.5rem 1rem;
         flex-direction: row;
         align-items: center;
@@ -651,9 +648,9 @@ body {
         width: 100%;
         height: 100vh;
         height: 100dvh;
-        background: linear-gradient(180deg, 
-            rgba(30, 20, 15, 0.98) 0%, 
-            rgba(20, 15, 10, 0.99) 100%);
+        background: linear-gradient(180deg,
+                rgba(3, 3, 5, 0.98) 0%,
+                rgba(10, 10, 15, 0.99) 100%);
         backdrop-filter: blur(30px);
         -webkit-backdrop-filter: blur(30px);
         display: flex;
@@ -700,12 +697,29 @@ body {
     }
 
     /* Staggered animation for nav items */
-    .nav-links.active .nav-link:nth-child(1) { transition-delay: 0.05s; }
-    .nav-links.active .nav-link:nth-child(2) { transition-delay: 0.1s; }
-    .nav-links.active .nav-link:nth-child(3) { transition-delay: 0.15s; }
-    .nav-links.active .nav-link:nth-child(4) { transition-delay: 0.2s; }
-    .nav-links.active .nav-link:nth-child(5) { transition-delay: 0.25s; }
-    .nav-links.active .nav-link:nth-child(6) { transition-delay: 0.3s; }
+    .nav-links.active .nav-link:nth-child(1) {
+        transition-delay: 0.05s;
+    }
+
+    .nav-links.active .nav-link:nth-child(2) {
+        transition-delay: 0.1s;
+    }
+
+    .nav-links.active .nav-link:nth-child(3) {
+        transition-delay: 0.15s;
+    }
+
+    .nav-links.active .nav-link:nth-child(4) {
+        transition-delay: 0.2s;
+    }
+
+    .nav-links.active .nav-link:nth-child(5) {
+        transition-delay: 0.25s;
+    }
+
+    .nav-links.active .nav-link:nth-child(6) {
+        transition-delay: 0.3s;
+    }
 
     .nav-link img {
         width: 24px;
@@ -725,8 +739,8 @@ body {
     .nav-link:hover,
     .nav-link:active,
     .nav-link.active {
-        background: rgba(255, 180, 100, 0.15);
-        border-color: rgba(255, 180, 100, 0.3);
+        background: rgba(112, 0, 223, 0.2);
+        border-color: rgba(112, 0, 223, 0.4);
         color: #fff;
     }
 

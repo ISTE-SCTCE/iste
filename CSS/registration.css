@@ -1,0 +1,283 @@
+/* Registration Page Specific Styles */
+.registration-main {
+    padding-top: 8rem;
+    padding-bottom: 4rem;
+}
+
+.page-title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 3rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    background: linear-gradient(135deg, var(--white) 0%, var(--primary-purple) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(0 2px 8px var(--glow-color-strong));
+}
+
+.registration-form {
+    max-width: 800px;
+    margin: 0 auto 4rem auto;
+    padding: 3rem;
+    /* The glass-effect class should be applied in the HTML */
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px solid var(--glass-border);
+    background: rgba(0, 0, 0, 0.2);
+    color: #fff;
+    font-size: 1rem;
+    /* Ensure readability */
+    transition: all var(--transition-speed) ease;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    border-color: var(--primary-purple);
+    background: rgba(0, 0, 0, 0.3);
+    outline: none;
+    box-shadow: 0 0 10px var(--glow-color);
+}
+
+/* Date picker styling */
+.form-group input[type="date"] {
+    color-scheme: dark;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(1) brightness(1.5) drop-shadow(0 0 2px var(--primary-purple));
+    cursor: pointer;
+}
+
+
+.membership-options-title {
+    font-weight: bold;
+    margin-bottom: 1rem;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.radio-group {
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+}
+
+.radio-group input {
+    width: auto;
+    margin-right: 10px;
+}
+
+.radio-group label {
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 400;
+}
+
+/* Use the consistent button styles */
+.btn-primary {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, rgba(138, 43, 226, 0.3) 0%, rgba(75, 0, 130, 0.3) 100%);
+    color: #fff;
+    border: 2px solid rgba(138, 43, 226, 0.5);
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    box-shadow: 0 6px 20px rgba(138, 43, 226, 0.2);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, rgba(138, 43, 226, 0.5) 0%, rgba(75, 0, 130, 0.5) 100%);
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 8px 25px rgba(138, 43, 226, 0.3), 0 0 30px rgba(138, 43, 226, 0.2);
+    border-color: rgba(138, 43, 226, 0.7);
+}
+
+#submission-status {
+    text-align: center;
+    margin-top: 1.5rem;
+    font-size: 1.1rem;
+}
+
+/* Fee Structure Poster Styles */
+.fee-poster {
+    max-width: 800px;
+    margin: 4rem auto;
+    padding: 3rem;
+    text-align: center;
+    border-radius: 20px;
+    /* Applying the glass effect */
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4), 0 0 30px var(--glow-color);
+}
+
+.fee-poster-title {
+    font-size: 2.5rem;
+    font-weight: 900;
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, #fff, var(--primary-purple), #7AE0FF);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    filter: drop-shadow(0 2px 15px var(--glow-color-strong));
+}
+
+.fee-poster-subtitle {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 2.5rem;
+}
+
+.fee-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2.5rem;
+}
+
+.fee-card {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 2rem;
+    border-radius: 15px;
+    border: 1px solid var(--glass-border);
+    transition: all var(--transition-speed) ease;
+}
+
+.fee-card:hover {
+    transform: translateY(-5px) scale(1.03);
+    box-shadow: 0 8px 25px var(--glow-color);
+    border-color: var(--primary-purple);
+}
+
+.fee-card-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-purple);
+    margin-bottom: 1rem;
+}
+
+.fee-card-price {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    color: #fff;
+}
+
+.fee-card-description {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.6;
+}
+
+.fee-card.best-value {
+    background: linear-gradient(135deg, var(--primary-purple), var(--dark-purple));
+    border-color: var(--primary-purple);
+    position: relative;
+    overflow: hidden;
+}
+
+.best-value-badge {
+    position: absolute;
+    top: 15px;
+    right: -30px;
+    background: #ffc107;
+    color: #000;
+    padding: 5px 30px;
+    font-weight: 700;
+    transform: rotate(45deg);
+    font-size: 0.9rem;
+}
+
+
+
+.summary-section {
+    border-top: 1px solid var(--glass-border);
+    padding-top: 2rem;
+    margin-top: 2rem;
+}
+
+.summary-title {
+    font-size: 1.8rem;
+    color: #fff;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.summary-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1.1rem;
+}
+
+.summary-list li {
+    margin-bottom: 0.5rem;
+}
+
+@media (max-width: 768px) {
+    .page-title {
+        font-size: 2.5rem;
+    }
+
+    .registration-form {
+        padding: 2rem;
+    }
+
+    .fee-poster {
+        padding: 2rem;
+    }
+
+    .fee-poster-title {
+        font-size: 2rem;
+    }
+
+    .fee-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .page-title {
+        font-size: 2rem;
+    }
+
+    .registration-form {
+        padding: 1.5rem;
+    }
+
+    .fee-poster {
+        padding: 1.5rem;
+    }
+
+    .fee-poster-title {
+        font-size: 1.8rem;
+    }
+}

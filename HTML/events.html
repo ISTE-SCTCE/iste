@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>Events | ISTE SCTCE</title>
+
+    <!-- FONTS -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../CSS/main.css">
+    <link rel="stylesheet" href="../components/ui/glowing-effect.css">
+    <script type="importmap">
+    {
+      "imports": {
+        "motion": "https://cdn.jsdelivr.net/npm/motion@11.11.13/+esm"
+      }
+    }
+    </script>
+    <!-- Keeping events.css might conflict, but let's try to rely on main.css overrides first, or just inline the necessary grid layout -->
+    <style>
+        .events-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .filter-bar {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+            justify-content: center;
+        }
+
+        .filter-btn {
+            padding: 0.5rem 1.5rem;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #fff;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .filter-btn.active,
+        .filter-btn:hover {
+            background: var(--accent-secondary);
+            border-color: var(--accent-secondary);
+            color: #000;
+            font-weight: 600;
+        }
+
+        .event-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--accent-glow);
+            padding: 0.25rem 0.75rem;
+            border-radius: 99px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            z-index: 2;
+        }
+
+        .event-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            background: #000;
+        }
+    </style>
+
+    <!-- SCRIPTS -->
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+
+<body>
+
+    <!-- FADE OVERLAY (for bidirectional fade transition) -->
+    <div class="page-fade-overlay"></div>
+
+    <!-- 3D BACKGROUND (Same as home page) -->
+    <div id="canvas-container" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;"></div>
+
+    <!-- GLASS NAVIGATION -->
+    <header class="glass-header">
+        <!-- Separate Logo Circle -->
+        <a href="index.html" class="logo-link">
+            <img src="../IMAGES/isteofficiallogo.png" alt="ISTE" class="logo-img">
+        </a>
+
+        <nav class="glass-nav">
+            <button class="menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link"><img src="../ICON/home_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg"
+                        alt=""><span>Home</span></a>
+                <a href="events.html" class="nav-link active"><img
+                        src="../ICON/event_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" alt=""><span>Events</span></a>
+                <a href="execom.html" class="nav-link"><img
+                        src="../ICON/groups_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" alt=""><span>Execom</span></a>
+                <a href="forums.html" class="nav-link"><img
+                        src="../ICON/communities_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg"
+                        alt=""><span>Forums</span></a>
+                <a href="gallery.html" class="nav-link"><img
+                        src="../ICON/gallery_thumbnail_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg"
+                        alt=""><span>Gallery</span></a>
+                <a href="contact.html" class="nav-link"><img
+                        src="../ICON/mail_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" alt=""><span>Contact</span></a>
+                <!-- More Button (Mobile Only) -->
+                <button class="nav-link nav-more-btn" aria-label="More menu" style="border: none; cursor: pointer;">
+                    <img src="../ICON/more_vert_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" alt="">
+                    <span>More</span>
+                </button>
+            </div>
+            <div class="nav-pebble"></div>
+        </nav>
+
+        <!-- ISTE Logo on Right -->
+        <a href="index.html" class="logo-link-right">
+            <img src="../IMAGES/istelogofinal.png" alt="ISTE Logo" class="logo-img-right">
+        </a>
+    </header>
+
+    <div class="nav-overlay"></div>
+
+    <main class="app-container content-section">
+
+        <div class="section-head reveal-text">
+            <h2>Events</h2>
+            <p>Past, Present, and Future.</p>
+        </div>
+
+
+        <!-- Filter -->
+        <div class="filter-bar reveal-text">
+            <button class="filter-btn active" onclick="filterEvents('all')">All</button>
+            <button class="filter-btn" onclick="filterEvents('upcoming')">Upcoming</button>
+            <button class="filter-btn" onclick="filterEvents('past')">Past</button>
+        </div>
+
+        <!-- Events Grid -->
+        <div class="events-grid">
+
+            <!-- Mentron Event -->
+            <div class="glass-card reveal-text" data-category="upcoming">
+                <div class="event-badge">LIVE</div>
+                <img src="../IMAGES/MENTRON LOGO.png" alt="Mentron Logo" class="event-img"
+                    style="object-fit:contain;padding:1.5rem;background:white;border-radius:12px;box-shadow:0 4px 18px rgba(0,0,0,0.06);">
+                <div class="card-title">MENTRON</div>
+                <div style="color: var(--accent-secondary); font-size: 0.9rem; margin-bottom: 0.5rem;">30
+                    Nov 2025 •
+                    Workshop</div>
+                <p class="card-desc">A flagship SWaS undertaking. Hands-on AI & ML workshop.</p>
+                <a href="workshop.html" class="magnetic-btn secondary"
+                    style="margin-left: 0; margin-top: 1rem; width: 100%; text-align: center;">Details</a>
+            </div>
+
+
+
+
+
+        </div>
+
+    </main>
+
+    <footer class="glass-footer">
+        <h2>ISTE SCTCE</h2>
+        <p>© 2025 Sree Chithra Thirunal College of Engineering</p>
+    </footer>
+
+    <!-- LOGIC -->
+    <script type="module" src="../JS/3d-background.js"></script>
+    <script src="../JS/modern.js"></script>
+    <script>
+        // Simple Filter Logic
+        function filterEvents(cat) {
+            const cards = document.querySelectorAll('.glass-card[data-category]');
+            const btns = document.querySelectorAll('.filter-btn');
+
+            // Update buttons
+            btns.forEach(b => b.classList.remove('active'));
+            event.target.classList.add('active');
+
+            // Filter cards
+            cards.forEach(card => {
+                if (cat === 'all' || card.dataset.category === cat) {
+                    gsap.to(card, { autoAlpha: 1, display: 'block', duration: 0.5 });
+                } else {
+                    gsap.to(card, { autoAlpha: 0, display: 'none', duration: 0.5 });
+                }
+            });
+        }
+    </script>
+    <a href="registration.html" class="floating-join-btn">Join Now</a>
+    <script type="module" src="../JS/init-glowing-effect.js"></script>
+</body>
+
+</html>

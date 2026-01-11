@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>Join | ISTE SCTCE</title>
+
+    <!-- FONTS -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../CSS/main.css">
+    <link rel="stylesheet" href="../components/ui/glowing-effect.css">
+    <script type="importmap">
+    {
+      "imports": {
+        "motion": "https://cdn.jsdelivr.net/npm/motion@11.11.13/+esm"
+      }
+    }
+    </script>
+
+    <!-- SCRIPTS -->
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+
+<body>
+
+    <!-- FADE OVERLAY (for bidirectional fade transition) -->
+    <div class="page-fade-overlay"></div>
+
+    <!-- 3D BACKGROUND (Same as home page) -->
+    <div id="canvas-container" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;"></div>
+
+    <!-- GLASS NAVIGATION -->
+    <header class="glass-header">
+        <!-- Separate Logo Circle -->
+        <a href="index.html" class="logo-link">
+            <img src="../IMAGES/isteofficiallogo.png" alt="ISTE" class="logo-img">
+        </a>
+
+        <nav class="glass-nav">
+            <button class="menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link"><img src="../ICON/home_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg"
+                        alt=""><span>Home</span></a>
+                <a href="events.html" class="nav-link"><img
+                        src="../ICON/event_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" alt=""><span>Events</span></a>
+                <a href="execom.html" class="nav-link"><img
+                        src="../ICON/groups_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" alt=""><span>Execom</span></a>
+                <a href="forums.html" class="nav-link"><img
+                        src="../ICON/communities_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg"
+                        alt=""><span>Forums</span></a>
+                <a href="gallery.html" class="nav-link"><img
+                        src="../ICON/gallery_thumbnail_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg"
+                        alt=""><span>Gallery</span></a>
+                <a href="contact.html" class="nav-link"><img
+                        src="../ICON/mail_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" alt=""><span>Contact</span></a>
+                <!-- More Button (Mobile Only) -->
+                <button class="nav-link nav-more-btn" aria-label="More menu" style="border: none; cursor: pointer;">
+                    <img src="../ICON/more_vert_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" alt="">
+                    <span>More</span>
+                </button>
+            </div>
+            <div class="nav-pebble"></div>
+        </nav>
+
+        <!-- ISTE Logo on Right -->
+        <a href="index.html" class="logo-link-right">
+            <img src="../IMAGES/istelogofinal.png" alt="ISTE Logo" class="logo-img-right">
+        </a>
+    </header>
+
+    <div class="nav-overlay"></div>
+
+
+    <main class="app-container content-section">
+
+        <div class="section-head reveal-text">
+            <h2>Join ISTE</h2>
+            <p>Become part of the most vibrant technical community.</p>
+        </div>
+
+        <div class="glass-card reveal-text" style="text-align: left;">
+            <div class="card-title" style="text-align: center; margin-bottom: 2rem;">Why Join?</div>
+
+            <div class="grid-cards" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
+
+                <div style="margin-bottom: 1.5rem;">
+                    <h3 style="color: #fff; margin-bottom: 0.5rem;">Hands-on Projects</h3>
+                    <p class="card-desc">Practical project challenges and mentorship to gain real engineering
+                        experience.</p>
+                </div>
+
+                <div style="margin-bottom: 1.5rem;">
+                    <h3 style="color: #fff; margin-bottom: 0.5rem;">Quality Training</h3>
+                    <p class="card-desc">Workshops and sessions by experts to improve technical skills.</p>
+                </div>
+
+                <div style="margin-bottom: 1.5rem;">
+                    <h3 style="color: #fff; margin-bottom: 0.5rem;">Networking</h3>
+                    <p class="card-desc">Connect with peers and industry leaders through events and collaborations.</p>
+                </div>
+
+                <div style="margin-bottom: 1.5rem;">
+                    <h3 style="color: #fff; margin-bottom: 0.5rem;">Research Culture</h3>
+                    <p class="card-desc">Access guidance for research projects and publications.</p>
+                </div>
+
+                <div style="margin-bottom: 1.5rem;">
+                    <h3 style="color: #fff; margin-bottom: 0.5rem;">Certification</h3>
+                    <p class="card-desc">Official certificates and letterheads validating your participation.</p>
+                </div>
+
+                <div style="margin-bottom: 1.5rem;">
+                    <h3 style="color: #fff; margin-bottom: 0.5rem;">Leadership</h3>
+                    <p class="card-desc">Develop management skills through organizing events and committees.</p>
+                </div>
+
+            </div>
+
+            <div style="text-align: center; margin-top: 3rem;">
+                <a href="registration.html" class="magnetic-btn">Register Now</a>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="glass-footer">
+        <h2>ISTE SCTCE</h2>
+        <p>© 2025 Sree Chithra Thirunal College of Engineering</p>
+    </footer>
+
+    <!-- LOGIC -->
+    <script type="module" src="../JS/3d-background.js"></script>
+    <script src="../JS/modern.js"></script>
+    <a href="registration.html" class="floating-join-btn">Join Now</a>
+    <script type="module" src="../JS/init-glowing-effect.js"></script>
+</body>
+
+</html>

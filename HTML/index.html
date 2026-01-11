@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>ISTE | Future Ready</title>
+
+    <!-- FONTS -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../CSS/main.css">
+    <link rel="stylesheet" href="../CSS/intro-animation.css">
+    <link rel="stylesheet" href="../components/ui/glowing-effect.css">
+    <link rel="stylesheet" href="../components/ui/execom-popup.css">
+    <script type="importmap">
+    {
+      "imports": {
+        "motion": "https://cdn.jsdelivr.net/npm/motion@11.11.13/+esm"
+      }
+    }
+    </script>
+
+    <!-- SCRIPTS (CDN) -->
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+</head>
+
+<body>
+
+    <!-- FADE OVERLAY (for smooth transition when returning from other pages) -->
+    <div class="page-fade-overlay"></div>
+
+    <!-- 3D BACKGROUND -->
+    <div id="canvas-container" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;"></div>
+
+    <!-- GLASS NAVIGATION -->
+    <header class="glass-header">
+        <!-- Separate Logo Circle -->
+        <a href="index.html" class="logo-link">
+            <img src="../IMAGES/isteofficiallogo.png" alt="ISTE" class="logo-img">
+        </a>
+
+
+
+        <nav class="glass-nav">
+            <button class="menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <!-- Navigation Links (becomes drawer on mobile) -->
+            <div class="nav-links">
+                <a href="#home" class="nav-link"><img src="../ICON/home_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg"
+                        alt=""><span>Home</span></a>
+                <a href="events.html" class="nav-link"><img
+                        src="../ICON/event_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" alt=""><span>Events</span></a>
+                <a href="execom.html" class="nav-link"><img
+                        src="../ICON/groups_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" alt=""><span>Execom</span></a>
+                <a href="forums.html" class="nav-link"><img
+                        src="../ICON/communities_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg"
+                        alt=""><span>Forums</span></a>
+                <a href="gallery.html" class="nav-link"><img
+                        src="../ICON/gallery_thumbnail_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg"
+                        alt=""><span>Gallery</span></a>
+                <a href="contact.html" class="nav-link"><img
+                        src="../ICON/mail_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" alt=""><span>Contact</span></a>
+                <!-- More Button (Mobile Only) -->
+                <button class="nav-link nav-more-btn" aria-label="More menu" style="border: none; cursor: pointer;">
+                    <img src="../ICON/more_vert_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" alt="">
+                    <span>More</span>
+                </button>
+            </div>
+
+            <!-- The Pebble Element (desktop only) -->
+            <div class="nav-pebble"></div>
+        </nav>
+
+        <!-- ISTE Logo on Right -->
+        <a href="index.html" class="logo-link-right">
+            <img src="../IMAGES/istelogofinal.png" alt="ISTE Logo" class="logo-img-right">
+        </a>
+    </header>
+
+    <!-- Mobile Nav Overlay -->
+    <div class="nav-overlay"></div>
+
+
+
+    <main class="app-container">
+
+        <!-- HERO SECTION -->
+        <section id="home" class="hero-revamp" style="padding-top: 250px;">
+            <h1 class="hero-super-title reveal-text">ISTE<br>Student Chapter</h1>
+            <p class="hero-desc reveal-text">Empowering the next generation of engineers
+                with innovation, technical excellence, and leadership.</p>
+            <div class="hero-actions reveal-text">
+                <a href="join.html" class="magnetic-btn">Join The Chapter</a>
+                <a href="iste.html" class="magnetic-btn secondary">Learn More</a>
+            </div>
+        </section>
+
+        <!-- EXECOM CALL -->
+        <section class="content-section">
+            <div class="glass-card reveal-text"
+                style="text-align: center; border: 1px solid rgba(112, 0, 223, 0.3); box-shadow: 0 0 30px rgba(112, 0, 223, 0.1);">
+                <div class="section-head" style="margin-bottom: 2rem;">
+                    <h2 style="color: #fff;">We Are Hiring</h2>
+                    <p style="color: var(--accent-primary);">Execom Call 2025</p>
+                </div>
+                <p style="max-width: 700px; margin: 0 auto 2.5rem; line-height: 1.6; color: var(--text-muted);">
+                    The ISTE Student Chapter is seeking passionate individuals to join our Executive Committee.
+                    If you have the drive to lead, innovate, and make a difference, we want to hear from you.
+                </p>
+                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                    <a href="execom-call.html" class="magnetic-btn">View Open Roles</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT US -->
+        <section class="content-section">
+            <div class="section-head reveal-text">
+                <h2>About Us</h2>
+                <p>Who we are and what we stand for</p>
+            </div>
+            <div class="glass-card reveal-text" style="max-width: 900px; margin: 0 auto; text-align: center;">
+                <p style="color: var(--text-muted); line-height: 1.8; font-size: 1.1rem;">
+                    Established in 2004, the ISTE Student Chapter at Sree Chithra Thirunal College of Engineering
+                    is dedicated to equipping students with the technical know-how, practical application skills,
+                    and leadership qualities needed to excel in the modern engineering landscape. We strive to
+                    redefine technical education by fostering innovation, collaboration, and excellence. Our chapter
+                    has grown to become a vibrant technical community, bringing together students passionate about
+                    technology, research, and continuous learning.
+                </p>
+            </div>
+        </section>
+
+        <!-- STATS / ABOUT (Glass Cards) -->
+        <section class="content-section">
+            <div class="section-head reveal-text">
+                <h2>Our Impact</h2>
+                <p>Driving innovation through numbers</p>
+            </div>
+            <div class="grid-cards stagger-container">
+                <div class="glass-card scale-in">
+                    <div class="card-icon">👥</div>
+                    <div class="card-title">12 Active Members</div>
+                    <p class="card-desc">A growing community of passionate engineers and creators.</p>
+                </div>
+                <div class="glass-card scale-in">
+                    <div class="card-icon">🚀</div>
+                    <div class="card-title">Projects</div>
+                    <p class="card-desc">Real-world technical projects making tangible impact.</p>
+                </div>
+                <div class="glass-card scale-in">
+                    <div class="card-icon">📅</div>
+                    <div class="card-title">Events</div>
+                    <p class="card-desc">Workshops, hackathons, and seminars throughout the year.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- LATEST (Events Preview) -->
+        <section class="content-section">
+            <div class="section-head reveal-text">
+                <h2>Experience ISTE</h2>
+                <p>Join us at our next big event</p>
+            </div>
+            <div class="grid-cards stagger-container">
+                <a href="workshop.html" class="glass-card" style="text-decoration: none; color: inherit;">
+                    <div class="card-title">Mentron Workshop</div>
+                    <p class="card-desc">Hands-on session on AI and Machine Learning. Don't miss out.</p>
+                    <div style="margin-top: 1rem; font-size: 0.9rem; color: var(--accent-secondary);">Read More →</div>
+                </a>
+                <a href="events.html" class="glass-card" style="text-decoration: none; color: inherit;">
+                    <div class="card-title">Tech Summit 2025</div>
+                    <p class="card-desc">The biggest technical summit of the year is coming soon.</p>
+                    <div style="margin-top: 1rem; font-size: 0.9rem; color: var(--accent-secondary);">Read More →</div>
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="glass-footer">
+        <h2>ISTE SCTCE</h2>
+        <p>© 2025 Sree Chithra Thirunal College of Engineering</p>
+    </footer>
+
+    <!-- LOGIC -->
+    <script src="../JS/intro-animation.js"></script>
+    <script type="module" src="../JS/3d-background.js"></script>
+    <script src="../JS/cloud-transition.js"></script>
+    <script src="../JS/modern.js"></script>
+
+    <!-- Glowing Effect Initialization -->
+    <script type="module" src="../JS/init-glowing-effect.js"></script>
+
+    <!-- EXECOM POPUP (Injected) -->
+    <div id="execom-popup-overlay" class="execom-popup-overlay" role="dialog" aria-modal="true"
+        aria-labelledby="popup-title" aria-hidden="true" style="display: none;">
+        <div class="execom-popup-container">
+            <button id="execom-popup-close" class="execom-popup-close" aria-label="Close Popup">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+            <div class="popup-particles" aria-hidden="true">
+                <div class="particle p1"></div>
+                <div class="particle p2"></div>
+                <div class="particle p3"></div>
+            </div>
+            <div class="execom-popup-content-wrapper">
+                <div class="execom-popup-image">
+                    <div class="image-shimmer-overlay"></div>
+                    <img src="../IMAGES/EXECOM%20call.png" alt="Execom Call 2025" id="popup-hero-image">
+                </div>
+                <div class="execom-popup-text">
+                    <span class="popup-eyebrow">We Are Hiring</span>
+                    <h2 id="popup-title" class="popup-title">Join the<br>Executive Committee</h2>
+                    <p class="popup-description">
+                        Be a part of a dynamic team driving innovation and excellence.
+                        Develop leadership skills, network with like-minded peers, and make an impact.
+                    </p>
+                    <div class="popup-actions">
+                        <a href="execom-call.html" class="popup-cta-btn">
+                            <span>Apply Now</span>
+                            <div class="btn-glow"></div>
+                        </a>
+                    </div>
+                    <div class="popup-footer">
+                        <label class="popup-checkbox-label">
+                            <input type="checkbox" id="popup-dont-show-again">
+                            <span class="checkbox-custom"></span>
+                            <span class="checkbox-text">Don't show this again</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Execom Popup Logic -->
+    <script type="module">
+        import ExecomPopup from '../components/ui/execom-popup.js';
+
+        const popup = new ExecomPopup({
+            delay: 1500,
+            heroImage: '../IMAGES/EXECOM%20call.png'
+        });
+        popup.init();
+    </script>
+</body>
+
+</html>

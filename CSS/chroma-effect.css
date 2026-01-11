@@ -1,0 +1,77 @@
+/* CSS/chroma-effect.css */
+
+.grid-cards {
+        position: relative;
+        /* Ensure extended grid-cards acts as the container */
+        --x: 50%;
+        --y: 50%;
+        --r: 220px;
+        --cols: 3;
+        /* Fallback, though existing grid handles columns */
+}
+
+/* Ensure the grid container is positioned for absolute children */
+.chroma-overlay {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        z-index: 999;
+        /* Ensure it is on top of everything */
+        backdrop-filter: grayscale(1) brightness(0.6);
+        /* Darker and grayer outside */
+        -webkit-backdrop-filter: grayscale(1) brightness(0.6);
+        background: rgba(0, 0, 0, 0);
+        /* Transparent background */
+
+        mask-image: radial-gradient(circle var(--r) at var(--x) var(--y),
+                        transparent 0%,
+                        transparent 20%,
+                        rgba(0, 0, 0, 0.4) 40%,
+                        black 70%);
+        -webkit-mask-image: radial-gradient(circle var(--r) at var(--x) var(--y),
+                        transparent 0%,
+                        transparent 20%,
+                        rgba(0, 0, 0, 0.4) 40%,
+                        black 70%);
+}
+
+.chroma-fade {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        z-index: 11;
+        /* Above overlay */
+        backdrop-filter: grayscale(1) brightness(0.78);
+        -webkit-backdrop-filter: grayscale(1) brightness(0.78);
+        background: rgba(0, 0, 0, 0.001);
+
+        mask-image: radial-gradient(circle var(--r) at var(--x) var(--y),
+                        white 0%,
+                        white 15%,
+                        rgba(255, 255, 255, 0.9) 30%,
+                        rgba(255, 255, 255, 0.78) 45%,
+                        rgba(255, 255, 255, 0.65) 60%,
+                        rgba(255, 255, 255, 0.5) 75%,
+                        rgba(255, 255, 255, 0.32) 88%,
+                        transparent 100%);
+        -webkit-mask-image: radial-gradient(circle var(--r) at var(--x) var(--y),
+                        white 0%,
+                        white 15%,
+                        rgba(255, 255, 255, 0.9) 30%,
+                        rgba(255, 255, 255, 0.78) 45%,
+                        rgba(255, 255, 255, 0.65) 60%,
+                        rgba(255, 255, 255, 0.5) 75%,
+                        rgba(255, 255, 255, 0.32) 88%,
+                        transparent 100%);
+
+        opacity: 1;
+        transition: opacity 0.25s ease;
+}
+
+@media (max-width: 768px) {
+
+        .chroma-overlay,
+        .chroma-fade {
+                display: none;
+        }
+}

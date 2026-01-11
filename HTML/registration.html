@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
+    <title>Registration | ISTE SCTCE</title>
+
+    <!-- FONTS -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../CSS/main.css">
+    <link rel="stylesheet" href="../components/ui/glowing-effect.css">
+    <script type="importmap">
+    {
+      "imports": {
+        "motion": "https://cdn.jsdelivr.net/npm/motion@11.11.13/+esm"
+      }
+    }
+    </script>
+
+    <!-- SCRIPTS -->
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+
+<body>
+
+    <!-- FADE OVERLAY (for bidirectional fade transition) -->
+    <div class="page-fade-overlay"></div>
+
+    <!-- 3D BACKGROUND (Same as home page) -->
+    <div id="canvas-container" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;"></div>
+
+    <!-- GLASS NAVIGATION -->
+    <header class="glass-header">
+        <!-- Separate Logo Circle -->
+        <a href="index.html" class="logo-link">
+            <img src="../IMAGES/isteofficiallogo.png" alt="ISTE" class="logo-img">
+        </a>
+
+        <nav class="glass-nav">
+            <button class="menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link"><img src="../ICON/home_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg"
+                        alt=""><span>Home</span></a>
+                <a href="events.html" class="nav-link"><img
+                        src="../ICON/event_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" alt=""><span>Events</span></a>
+                <a href="execom.html" class="nav-link"><img
+                        src="../ICON/groups_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" alt=""><span>Execom</span></a>
+                <a href="forums.html" class="nav-link"><img
+                        src="../ICON/communities_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg"
+                        alt=""><span>Forums</span></a>
+                <a href="gallery.html" class="nav-link"><img
+                        src="../ICON/gallery_thumbnail_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg"
+                        alt=""><span>Gallery</span></a>
+                <a href="contact.html" class="nav-link"><img
+                        src="../ICON/mail_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" alt=""><span>Contact</span></a>
+                <!-- More Button (Mobile Only) -->
+                <button class="nav-link nav-more-btn" aria-label="More menu" style="border: none; cursor: pointer;">
+                    <img src="../ICON/more_vert_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" alt="">
+                    <span>More</span>
+                </button>
+            </div>
+            <div class="nav-pebble"></div>
+            <a href="join.html" class="magnetic-btn nav-join-btn"
+                style="padding: 0.5rem 1.5rem; font-size: 0.9rem; margin-left: 0.5rem;">Join</a>
+        </nav>
+
+        <!-- ISTE Logo on Right -->
+        <a href="index.html" class="logo-link-right">
+            <img src="../IMAGES/istelogofinal.png" alt="ISTE Logo" class="logo-img-right">
+        </a>
+    </header>
+    <div class="nav-overlay"></div>
+
+
+    <main class="app-container content-section">
+
+        <div class="section-head reveal-text">
+            <h2>Registration</h2>
+            <p>Join the ISTE Student Chapter</p>
+        </div>
+
+        <div class="grid-cards" style="grid-template-columns: 2fr 1fr; align-items: start;">
+
+            <!-- FORM -->
+            <div class="glass-card reveal-text">
+                <div class="card-title">Membership Form</div>
+
+                <form id="registration-form"
+                    style="display: flex; flex-direction: column; gap: 1.5rem; margin-top: 1rem;">
+
+                    <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                        <label for="name"
+                            style="color: var(--accent-secondary); font-size: 0.9rem; text-transform: uppercase;">Full
+                            Name</label>
+                        <input type="text" id="name" name="Name" class="glass-input"
+                            style="padding: 1rem; border-radius: 12px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #fff;"
+                            required />
+                    </div>
+
+                    <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                        <label for="dob"
+                            style="color: var(--accent-secondary); font-size: 0.9rem; text-transform: uppercase;">Date
+                            of Birth</label>
+                        <input type="date" id="dob" name="DOB" class="glass-input"
+                            style="padding: 1rem; border-radius: 12px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #fff;"
+                            required />
+                    </div>
+
+                    <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                        <label for="year"
+                            style="color: var(--accent-secondary); font-size: 0.9rem; text-transform: uppercase;">Year</label>
+                        <select id="year" name="Year" class="glass-input"
+                            style="padding: 1rem; border-radius: 12px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #fff;"
+                            required>
+                            <option value="" style="background: #000;">Select Year</option>
+                            <option value="1" style="background: #000;">First Year</option>
+                            <option value="2" style="background: #000;">Second Year</option>
+                            <option value="3" style="background: #000;">Third Year</option>
+                            <option value="4" style="background: #000;">Fourth Year</option>
+                        </select>
+                    </div>
+
+                    <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                        <label for="branch"
+                            style="color: var(--accent-secondary); font-size: 0.9rem; text-transform: uppercase;">Branch</label>
+                        <select id="branch" name="Branch" class="glass-input"
+                            style="padding: 1rem; border-radius: 12px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #fff;"
+                            required>
+                            <option value="" style="background: #000;">Select branch</option>
+                            <option value="Computer Science" style="background: #000;">Computer Science</option>
+                            <option value="Electronics and Communication" style="background: #000;">Electronics and
+                                Communication</option>
+                            <option value="Mechanical Engineering" style="background: #000;">Mechanical Engineering
+                            </option>
+                            <option value="Biotechnology and Chemical Engineering" style="background: #000;">
+                                Biotechnology and Chemical Engineering</option>
+                            <option value="Computer Science-AI&ML" style="background: #000;">Computer Science-AI&ML
+                            </option>
+                            <option value="Mechanical and Automobile Engineering" style="background: #000;">Mechanical
+                                and Automobile Engineering</option>
+                        </select>
+                    </div>
+
+                    <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                        <label for="phone"
+                            style="color: var(--accent-secondary); font-size: 0.9rem; text-transform: uppercase;">Phone
+                            (10 digits)</label>
+                        <input type="tel" id="phone" name="Phone" pattern="[0-9]{10}" class="glass-input"
+                            style="padding: 1rem; border-radius: 12px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #fff;"
+                            required />
+                    </div>
+
+                    <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                        <label for="email"
+                            style="color: var(--accent-secondary); font-size: 0.9rem; text-transform: uppercase;">Email</label>
+                        <input type="email" id="email" name="Email" class="glass-input"
+                            style="padding: 1rem; border-radius: 12px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #fff;"
+                            required />
+                    </div>
+
+                    <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                        <label
+                            style="color: var(--accent-secondary); font-size: 0.9rem; text-transform: uppercase;">Membership</label>
+
+                        <div
+                            style="display: flex; gap: 0.5rem; align-items: center; padding: 0.5rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px;">
+                            <input type="radio" id="four-year-membership" name="Membership" value="2000"
+                                style="accent-color: var(--accent-primary);" required />
+                            <label for="four-year-membership" style="color: #fff; font-size: 0.9rem;">Four-Year
+                                Membership: ₹1999/-</label>
+                        </div>
+
+                        <div
+                            style="display: flex; gap: 0.5rem; align-items: center; padding: 0.5rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px;">
+                            <input type="radio" id="one-year-membership" name="Membership" value="650"
+                                style="accent-color: var(--accent-primary);" />
+                            <label for="one-year-membership" style="color: #fff; font-size: 0.9rem;">One-Year
+                                Membership: ₹649/-</label>
+                        </div>
+
+                        <div
+                            style="display: flex; gap: 0.5rem; align-items: center; padding: 0.5rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px;">
+                            <input type="radio" id="two-year-membership" name="Membership" value="1250"
+                                style="accent-color: var(--accent-primary);" />
+                            <label for="two-year-membership" style="color: #fff; font-size: 0.9rem;">Two-Year Membership
+                                (2nd Years Only): ₹1199/-</label>
+                        </div>
+                    </div>
+
+                    <!-- Forum Selection -->
+                    <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                        <label
+                            style="color: var(--accent-secondary); font-size: 0.9rem; text-transform: uppercase;">Forum
+                            Enrollment <span style="font-size: 0.75rem; color: #ff6b6b; margin-left: 0.5rem;">(Select a
+                                membership plan first)</span></label>
+
+                        <div
+                            style="display: flex; gap: 0.5rem; align-items: center; padding: 0.5rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px;">
+                            <input type="checkbox" id="forum-swas" name="Forum" value="SWaS Forum (299)"
+                                style="accent-color: var(--accent-primary);" />
+                            <label for="forum-swas" style="color: #fff; font-size: 0.9rem;">SWaS Forum: ₹299</label>
+                        </div>
+
+                        <div
+                            style="display: flex; gap: 0.5rem; align-items: center; padding: 0.5rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px;">
+                            <input type="checkbox" id="forum-exis" name="Forum" value="EXIS Forum (149)"
+                                style="accent-color: var(--accent-primary);" />
+                            <label for="forum-exis" style="color: #fff; font-size: 0.9rem;">EXIS Forum: ₹149</label>
+                        </div>
+
+                        <div
+                            style="display: flex; gap: 0.5rem; align-items: center; padding: 0.5rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px;">
+                            <input type="checkbox" id="forum-torq" name="Forum" value="TORQ Forum (129)"
+                                style="accent-color: var(--accent-primary);" />
+                            <label for="forum-torq" style="color: #fff; font-size: 0.9rem;">TORQ Forum: ₹129</label>
+                        </div>
+
+                        <div
+                            style="display: flex; gap: 0.5rem; align-items: center; padding: 0.5rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px;">
+                            <input type="checkbox" id="forum-bits" name="Forum" value="BITS Forum (129)"
+                                style="accent-color: var(--accent-primary);" />
+                            <label for="forum-bits" style="color: #fff; font-size: 0.9rem;">BITS Forum: ₹129</label>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                        <label for="transaction-id"
+                            style="color: var(--accent-secondary); font-size: 0.9rem; text-transform: uppercase;">Transaction
+                            ID</label>
+                        <input type="text" id="transaction-id" name="TransactionID" class="glass-input"
+                            style="padding: 1rem; border-radius: 12px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #fff;"
+                            required />
+                    </div>
+
+                    <button type="submit" class="magnetic-btn"
+                        style="border: none; width: 100%; margin-top: 1rem;">Submit Registration</button>
+                </form>
+
+                <div id="submission-status" style="margin-top: 1rem; text-align: center;"></div>
+            </div>
+
+            <!-- FEE STRUCTURE -->
+            <div class="glass-card reveal-text" style="position: sticky; top: 120px;">
+                <div class="card-title">Fee Structure</div>
+                <p class="card-desc" style="margin-bottom: 2rem;">ISTE Student Chapter – Membership & Forum Fees</p>
+
+                <div style="margin-bottom: 2rem;">
+                    <div
+                        style="background: rgba(102, 126, 234, 0.1); padding: 1.5rem; border-radius: 12px; margin-bottom: 1rem; border: 1px solid var(--accent-primary);">
+                        <div style="font-weight: 700; color: #fff;">4-Year ISTE</div>
+                        <div
+                            style="font-size: 1.5rem; color: var(--accent-primary); font-weight: 800; margin: 0.5rem 0;">
+                            ₹1999</div>
+                        <div style="font-size: 0.85rem; color: #ccc;">Valid for all 4 years. 2 Forums free for 1 year +
+                            Free Merch.</div>
+                        <div
+                            style="font-size: 0.7rem; background: var(--accent-primary); color: #fff; padding: 0.2rem 0.5rem; border-radius: 4px; display: inline-block; margin-top: 0.5rem;">
+                            BEST VALUE</div>
+                    </div>
+
+                    <div
+                        style="background: rgba(255, 255, 255, 0.05); padding: 1.5rem; border-radius: 12px; margin-bottom: 1rem;">
+                        <div style="font-weight: 700; color: #fff;">1-Year ISTE</div>
+                        <div style="font-size: 1.5rem; color: #fff; font-weight: 800; margin: 0.5rem 0;">₹649</div>
+                        <div style="font-size: 0.85rem; color: #ccc;">Valid for 1 year. Forums extra.</div>
+                    </div>
+
+                    <div style="background: rgba(255, 255, 255, 0.05); padding: 1.5rem; border-radius: 12px;">
+                        <div style="font-weight: 700; color: #fff;">2-Year ISTE</div>
+                        <div style="font-size: 1.5rem; color: #fff; font-weight: 800; margin: 0.5rem 0;">₹1199</div>
+                        <div style="font-size: 0.85rem; color: #ccc;">For 2nd years. 1 Forum free for 1 year.</div>
+                    </div>
+                </div>
+
+                <div class="card-title" style="font-size: 1.2rem; margin-bottom: 1rem;">Forum Fees (Per Year)</div>
+                <div
+                    style="display: flex; justify-content: space-between; margin-bottom: 0.5rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.5rem;">
+                    <span style="color: #ccc;">SWaS Forum</span>
+                    <span style="color: #fff;">₹299</span>
+                </div>
+                <div
+                    style="display: flex; justify-content: space-between; margin-bottom: 0.5rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.5rem;">
+                    <span style="color: #ccc;">EXIS Forum</span>
+                    <span style="color: #fff;">₹149</span>
+                </div>
+                <div
+                    style="display: flex; justify-content: space-between; margin-bottom: 0.5rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.5rem;">
+                    <span style="color: #ccc;">TORQ Forum</span>
+                    <span style="color: #fff;">₹129</span>
+                </div>
+                <div style="display: flex; justify-content: space-between;">
+                    <span style="color: #ccc;">BITS Forum</span>
+                    <span style="color: #fff;">₹129</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+    <footer class="glass-footer">
+        <h2>ISTE SCTCE</h2>
+        <p>© 2025 Sree Chithra Thirunal College of Engineering</p>
+    </footer>
+
+    <!-- LOGIC -->
+    <script type="module" src="../JS/3d-background.js"></script>
+    <script src="../JS/modern.js"></script>
+
+    <!-- Registration Logic -->
+    <script src="../JS/registration.js" defer></script>
+
+    <script type="module" src="../JS/init-glowing-effect.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
+    <title>MENTRON Workshop | ISTE SCTCE</title>
+
+    <!-- FONTS -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../CSS/main.css">
+    <link rel="stylesheet" href="../components/ui/glowing-effect.css">
+    <script type="importmap">
+    {
+      "imports": {
+        "motion": "https://cdn.jsdelivr.net/npm/motion@11.11.13/+esm"
+      }
+    }
+    </script>
+    <style>
+        /* Force 4 columns for committee grid on desktop */
+        /* Force 2 columns for committee grid on desktop */
+        @media (min-width: 900px) {
+            .committee-grid {
+                grid-template-columns: repeat(2, 1fr) !important;
+            }
+        }
+
+        .dept-group {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            padding: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        @media (min-width: 600px) {
+            .dept-group {
+                flex-direction: row;
+            }
+        }
+
+        .dept-group .glass-card {
+            flex: 1;
+            margin: 0;
+            /* Override any defaults */
+        }
+    </style>
+
+    <!-- SCRIPTS -->
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+
+<body>
+
+    <!-- FADE OVERLAY (for bidirectional fade transition) -->
+    <div class="page-fade-overlay"></div>
+
+    <!-- 3D BACKGROUND (Same as home page) -->
+    <div id="canvas-container" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;"></div>
+
+    <!-- GLASS NAVIGATION -->
+    <header class="glass-header">
+        <!-- Separate Logo Circle -->
+        <a href="index.html" class="logo-link">
+            <img src="../IMAGES/isteofficiallogo.png" alt="ISTE" class="logo-img">
+        </a>
+
+        <nav class="glass-nav">
+            <button class="menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link"><img src="../ICON/home_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg"
+                        alt=""><span>Home</span></a>
+                <a href="events.html" class="nav-link"><img
+                        src="../ICON/event_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" alt=""><span>Events</span></a>
+                <a href="execom.html" class="nav-link"><img
+                        src="../ICON/groups_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" alt=""><span>Execom</span></a>
+                <a href="forums.html" class="nav-link"><img
+                        src="../ICON/communities_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg"
+                        alt=""><span>Forums</span></a>
+                <a href="gallery.html" class="nav-link"><img
+                        src="../ICON/gallery_thumbnail_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg"
+                        alt=""><span>Gallery</span></a>
+                <a href="contact.html" class="nav-link"><img
+                        src="../ICON/mail_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" alt=""><span>Contact</span></a>
+                <!-- More Button (Mobile Only) -->
+                <button class="nav-link nav-more-btn" aria-label="More menu" style="border: none; cursor: pointer;">
+                    <img src="../ICON/more_vert_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" alt="">
+                    <span>More</span>
+                </button>
+            </div>
+            <div class="nav-pebble"></div>
+        </nav>
+
+        <!-- ISTE Logo on Right -->
+        <a href="index.html" class="logo-link-right">
+            <img src="../IMAGES/istelogofinal.png" alt="ISTE Logo" class="logo-img-right">
+        </a>
+    </header>
+    <div class="nav-overlay"></div>
+
+
+    <main class="app-container content-section">
+
+        <div class="section-head reveal-text">
+            <h2>MENTRON</h2>
+            <p>A SWaS Undertaking</p>
+            <img src="../IMAGES/mentron(main)poster.png" alt="Mentron Poster"
+                style="width:100%;max-width:600px;display:block;margin:2rem auto 1rem auto;border-radius:18px;box-shadow:0 8px 24px rgba(0,0,0,0.2);">
+        </div>
+
+        <div class="grid-cards" style="grid-template-columns: 2fr 1fr; align-items: start;">
+
+            <!-- OVERVIEW -->
+            <div class="glass-card reveal-text">
+                <div
+                    style="background: rgba(102, 126, 234, 0.1); display: inline-block; padding: 0.3rem 0.8rem; border-radius: 50px; font-size: 0.7rem; color: var(--accent-primary); border: 1px solid var(--accent-primary); margin-bottom: 1rem;">
+                    NON TECHNICAL PROGRAMME
+                </div>
+                <div class="card-title">Programme Overview</div>
+                <p class="card-desc">Join us for an immersive workshop experience where creativity meets technology.
+                    Learn the fundamentals of design thinking, branding, and visual identity creation.</p>
+
+                <div style="margin-top: 2rem; display: grid; gap: 1.5rem;">
+
+                    <div
+                        style="background: rgba(255,255,255,0.05); padding: 1.5rem; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);">
+                        <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">🎯</div>
+                        <h3 style="color: #fff; font-size: 1.1rem; margin-bottom: 0.5rem;">All-in-One Academic Support
+                        </h3>
+                        <p style="color: #ccc; font-size: 0.9rem;">Get access to notes, PYQs, assignments, record
+                            materials, projects, and more — all in one place, anytime.</p>
+                    </div>
+
+                    <div
+                        style="background: rgba(255,255,255,0.05); padding: 1.5rem; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);">
+                        <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">💡</div>
+                        <h3 style="color: #fff; font-size: 1.1rem; margin-bottom: 0.5rem;">Better Exam Preparation</h3>
+                        <p style="color: #ccc; font-size: 0.9rem;">Structured guidance, curated study materials, and
+                            proven exam-oriented resources to help you score higher with less stress.</p>
+                    </div>
+
+                    <div
+                        style="background: rgba(255,255,255,0.05); padding: 1.5rem; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);">
+                        <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">🚀</div>
+                        <h3 style="color: #fff; font-size: 1.1rem; margin-bottom: 0.5rem;">Skill Building</h3>
+                        <p style="color: #ccc; font-size: 0.9rem;">Participate in workshops, challenges, activities, and
+                            mini-projects that boost your skills and improve your resume.</p>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- DETAILS & REGISTRATION -->
+            <div style="display: flex; flex-direction: column; gap: 2rem;">
+
+                <!-- INFO CARD -->
+                <div class="glass-card reveal-text">
+                    <div class="card-title">Event Details</div>
+                    <div style="display: flex; flex-direction: column; gap: 1rem; margin-top: 1rem;">
+
+                        <div
+                            style="display: flex; align-items: center; gap: 1rem; padding-bottom: 1rem; border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <div style="font-size: 1.2rem;">📅</div>
+                            <div>
+                                <div style="color: #666; font-size: 0.8rem;">Date</div>
+                                <div style="color: #fff; font-weight: 500;">30 November 2025</div>
+                            </div>
+                        </div>
+
+                        <div
+                            style="display: flex; align-items: center; gap: 1rem; padding-bottom: 1rem; border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <div style="font-size: 1.2rem;">📍</div>
+                            <div>
+                                <div style="color: #666; font-size: 0.8rem;">Venue</div>
+                                <div style="color: #fff; font-weight: 500;">SCTCE Campus</div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSd4rnBie3Mk-ULtrRKyQgAH-Tk6bgjzFkxkbmetP_FX8Y8zlg/viewform"
+                        target="_blank" class="magnetic-btn"
+                        style="width: 100%; border: none; text-align: center; display: block; margin-top: 1.5rem; text-decoration: none;">Register
+                        Now</a>
+                </div>
+
+                <!-- TESTIMONIAL / EXTRA -->
+                <div class="glass-card reveal-text">
+                    <div class="card-title">Why Join?</div>
+                    <ul
+                        style="list-style-type: none; padding: 0; margin-top: 1rem; color: #ccc; font-size: 0.9rem; line-height: 1.6;">
+                        <li style="margin-bottom: 0.8rem; display: flex; gap: 0.5rem;">
+                            <span style="color: var(--accent-primary);">&check;</span> Learn from seniors and toppers.
+                        </li>
+                        <li style="margin-bottom: 0.8rem; display: flex; gap: 0.5rem;">
+                            <span style="color: var(--accent-primary);">&check;</span> Supportive student community.
+                        </li>
+                        <li style="margin-bottom: 0.8rem; display: flex; gap: 0.5rem;">
+                            <span style="color: var(--accent-primary);">&check;</span> Tailored help for assignments.
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- MENTRON COMMITTEE -->
+        <div class="section-head reveal-text" style="margin-top: 5rem;">
+            <h2>Mentron Committee</h2>
+            <p>Meet the organizers and mentors</p>
+        </div>
+
+        <div class="grid-cards committee-grid" style="gap: 2rem; align-items: start;">
+
+            <!-- CS Dept Group -->
+            <div class="dept-group">
+                <div class="glass-card reveal-text">
+                    <div
+                        style="width: 80px; height: 80px; background: rgba(255,255,255,0.1); border-radius: 50%; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                        <img src="../IMAGES/isteofficiallogo.png" style="width: 100%; opacity: 0.8;" alt="Member">
+                    </div>
+                    <div class="card-title" style="font-size: 1.1rem; text-align: center;">Member Name</div>
+                    <div
+                        style="text-align: center; color: var(--accent-secondary); font-size: 0.85rem; margin-top: 0.25rem;">
+                        CS Department</div>
+                </div>
+                <div class="glass-card reveal-text">
+                    <div
+                        style="width: 80px; height: 80px; background: rgba(255,255,255,0.1); border-radius: 50%; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                        <img src="../IMAGES/isteofficiallogo.png" style="width: 100%; opacity: 0.8;" alt="Member">
+                    </div>
+                    <div class="card-title" style="font-size: 1.1rem; text-align: center;">Member Name</div>
+                    <div
+                        style="text-align: center; color: var(--accent-secondary); font-size: 0.85rem; margin-top: 0.25rem;">
+                        CS Department</div>
+                </div>
+            </div>
+
+            <!-- ECE Dept Group -->
+            <div class="dept-group">
+                <div class="glass-card reveal-text">
+                    <div
+                        style="width: 80px; height: 80px; background: rgba(255,255,255,0.1); border-radius: 50%; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                        <img src="../IMAGES/isteofficiallogo.png" style="width: 100%; opacity: 0.8;" alt="Member">
+                    </div>
+                    <div class="card-title" style="font-size: 1.1rem; text-align: center;">Member Name</div>
+                    <div
+                        style="text-align: center; color: var(--accent-secondary); font-size: 0.85rem; margin-top: 0.25rem;">
+                        ECE Department</div>
+                </div>
+                <div class="glass-card reveal-text">
+                    <div
+                        style="width: 80px; height: 80px; background: rgba(255,255,255,0.1); border-radius: 50%; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                        <img src="../IMAGES/isteofficiallogo.png" style="width: 100%; opacity: 0.8;" alt="Member">
+                    </div>
+                    <div class="card-title" style="font-size: 1.1rem; text-align: center;">Member Name</div>
+                    <div
+                        style="text-align: center; color: var(--accent-secondary); font-size: 0.85rem; margin-top: 0.25rem;">
+                        ECE Department</div>
+                </div>
+            </div>
+
+            <!-- ME Dept Group -->
+            <div class="dept-group">
+                <div class="glass-card reveal-text">
+                    <div
+                        style="width: 80px; height: 80px; background: rgba(255,255,255,0.1); border-radius: 50%; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                        <img src="../IMAGES/isteofficiallogo.png" style="width: 100%; opacity: 0.8;" alt="Member">
+                    </div>
+                    <div class="card-title" style="font-size: 1.1rem; text-align: center;">Member Name</div>
+                    <div
+                        style="text-align: center; color: var(--accent-secondary); font-size: 0.85rem; margin-top: 0.25rem;">
+                        Mechanical Dept</div>
+                </div>
+                <div class="glass-card reveal-text">
+                    <div
+                        style="width: 80px; height: 80px; background: rgba(255,255,255,0.1); border-radius: 50%; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                        <img src="../IMAGES/isteofficiallogo.png" style="width: 100%; opacity: 0.8;" alt="Member">
+                    </div>
+                    <div class="card-title" style="font-size: 1.1rem; text-align: center;">Member Name</div>
+                    <div
+                        style="text-align: center; color: var(--accent-secondary); font-size: 0.85rem; margin-top: 0.25rem;">
+                        Mechanical Dept</div>
+                </div>
+            </div>
+
+            <!-- BT Dept Group -->
+            <div class="dept-group">
+                <div class="glass-card reveal-text">
+                    <div
+                        style="width: 80px; height: 80px; background: rgba(255,255,255,0.1); border-radius: 50%; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                        <img src="../IMAGES/isteofficiallogo.png" style="width: 100%; opacity: 0.8;" alt="Member">
+                    </div>
+                    <div class="card-title" style="font-size: 1.1rem; text-align: center;">Member Name</div>
+                    <div
+                        style="text-align: center; color: var(--accent-secondary); font-size: 0.85rem; margin-top: 0.25rem;">
+                        Biotech Dept</div>
+                </div>
+                <div class="glass-card reveal-text">
+                    <div
+                        style="width: 80px; height: 80px; background: rgba(255,255,255,0.1); border-radius: 50%; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                        <img src="../IMAGES/isteofficiallogo.png" style="width: 100%; opacity: 0.8;" alt="Member">
+                    </div>
+                    <div class="card-title" style="font-size: 1.1rem; text-align: center;">Member Name</div>
+                    <div
+                        style="text-align: center; color: var(--accent-secondary); font-size: 0.85rem; margin-top: 0.25rem;">
+                        Biotech Dept</div>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <footer class="glass-footer">
+        <h2>ISTE SCTCE</h2>
+        <p>© 2025 Sree Chithra Thirunal College of Engineering</p>
+    </footer>
+
+    <!-- LOGIC -->
+    <script type="module" src="../JS/3d-background.js"></script>
+    <script src="../JS/modern.js"></script>
+
+    <a href="registration.html" class="floating-join-btn">Join Now</a>
+    <script type="module" src="../JS/init-glowing-effect.js"></script>
+</body>
+
+</html>

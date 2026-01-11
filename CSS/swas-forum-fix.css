@@ -1,0 +1,82 @@
+/* Override flex-wrap to keep items in single row and fit 6 cards */
+.execom-grid.one-row-four-columns {
+    flex-wrap: nowrap !important;
+    justify-content: flex-start !important;
+    max-width: 2000px !important;
+    width: fit-content !important;
+    margin:  0 -9% 10% !important;
+    padding: 1rem 0 !important;
+}
+
+/* Additional fix for member grid centering - fit 6 cards */
+.execom-grid.one-row-four-columns .member-card {
+    flex: 0 1 350px !important;
+    min-width: 280px !important;
+    max-width: 350px !important;
+    margin: 0 0.1rem !important;
+}
+
+/* Update responsive breakpoints for 6 cards layout */
+@media (max-width: 1400px) {
+    .execom-grid.one-row-four-columns {
+        flex-wrap: nowrap !important;
+    }
+    .execom-grid.one-row-four-columns .member-card {
+        flex: 0 1 320px !important;
+    }
+}
+
+@media (max-width: 1200px) {
+    .execom-grid.one-row-four-columns {
+        flex-wrap: nowrap !important;
+    }
+    .execom-grid.one-row-four-columns .member-card {
+        flex: 0 1 300px !important;
+    }
+}
+
+@media (max-width: 900px) {
+    .execom-grid.one-row-four-columns {
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+    }
+    .execom-grid.one-row-four-columns .member-card {
+        flex: 0 1 calc(33.333% - 1rem) !important;
+        min-width: 250px !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .execom-grid.one-row-four-columns {
+        flex-wrap: wrap !important;
+    }
+    .execom-grid.one-row-four-columns .member-card {
+        flex: 0 1 calc(50% - 1rem) !important;
+    }
+}
+
+@media (max-width: 600px) {
+    .execom-grid.one-row-four-columns .member-card {
+        flex: 0 1 100% !important;
+    }
+}
+
+/* Footer gap fix for forum pages */
+.footer {
+    margin: 0 !important;
+    padding: 1rem 0 0 !important;
+    width: 100% !important;
+    position: relative !important;
+    left: 0 !important;
+    right: 0 !important;
+}
+
+body {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+html {
+    margin: 0 !important;
+    padding: 0 !important;
+}

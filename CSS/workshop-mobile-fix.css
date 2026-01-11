@@ -1,0 +1,81 @@
+/* Workshop Mobile Header Fixes */
+
+@media (max-width: 768px) {
+    /* Reorganize header layout for workshop */
+    .header .header-content {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        padding: 0 1rem !important;
+        gap: 0.5rem !important;
+        flex-wrap: nowrap !important;
+    }
+
+    /* Move ISTE logo to left side */
+    .header .logo-section {
+        order: 1 !important;
+        flex: 0 0 auto !important;
+        min-width: auto !important;
+        flex-basis: auto !important;
+    }
+
+    .header .logo-section .society-name {
+        display: none !important; /* Hide society name on mobile for cleaner look */
+    }
+
+    /* Move center logo to left-middle position */
+    .header .header-center-logo {
+        display: flex !important; /* Show center logo on mobile */
+        order: 2 !important;
+        position: relative !important;
+        left: 0 !important;
+        transform: none !important;
+        width: auto !important;
+        flex: 1 !important;
+        flex-basis: auto !important;
+        justify-content: flex-start !important;
+        margin: 0 !important;
+        margin-top: 0 !important;
+    }
+
+    .header .center-logo {
+        height: 50px !important; /* Smaller height for mobile */
+        width: auto !important;
+        padding-top: 0 !important;
+        margin: 0 !important;
+        margin-left: 1rem !important;
+        margin-right: 0 !important;
+    }
+
+    /* Move nav menu (more button) to right */
+    .header .nav-menu {
+        display: flex !important; /* Show nav menu on mobile */
+        order: 3 !important;
+        flex: 0 0 auto !important;
+        flex-basis: auto !important;
+        justify-content: flex-end !important;
+        flex-wrap: nowrap !important;
+        gap: 0.5rem !important;
+    }
+
+    /* Hide individual nav icons, keep only more button */
+    .header .nav-menu .nav-link:not(.more-button) {
+        display: none !important;
+    }
+
+    .header .more-menu {
+        display: block !important;
+    }
+
+    .header .more-button {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+
+    /* Adjust more dropdown for mobile */
+    .header .more-dropdown {
+        right: 0 !important;
+        left: auto !important;
+    }
+}

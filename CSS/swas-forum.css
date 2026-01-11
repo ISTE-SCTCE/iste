@@ -1,0 +1,83 @@
+/* SWaS Forum Specific Styles */
+
+/* Video Background */
+.video-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+    display: none; /* Hide video background */
+}
+
+.video-background video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+}
+
+/* Optional: Add overlay for better text readability */
+.video-background::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4); /* Adjust opacity as needed */
+    z-index: 1;
+}
+
+.video-background video {
+    z-index: 0;
+}
+
+/* Ensure content appears above video */
+.content-wrapper {
+    position: relative;
+    z-index: 2;
+}
+
+/* CRITICAL: Single Row Four Columns Layout - Override all other grid styles */
+.execom-grid.one-row-four-columns {
+    display: flex !important;
+    flex-wrap: wrap !important;
+            gap: 2rem !important;
+    max-width: 1600px !important;
+    width: fit-content !important;
+    margin: 0 auto !important;
+    padding: 2rem 1rem !important;
+    justify-content: center !important;
+    align-items: start !important;
+    box-sizing: border-box !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+    .execom-grid.one-row-four-columns {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 1.5rem !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .execom-grid.one-row-four-columns {
+        grid-template-columns: 1fr !important;
+        gap: 1rem !important;
+    }
+}
+
+/* Ensure member cards fit properly in the grid and are centered */
+.execom-grid.one-row-four-columns .member-card {
+    width: fit-content !important;
+    max-width: 350px !important;
+    margin: 0 auto !important;
+}

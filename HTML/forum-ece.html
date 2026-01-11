@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
+    <title>ECE Forum | ISTE SCTCE</title>
+
+    <!-- FONTS -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../CSS/main.css">
+    <link rel="stylesheet" href="../components/ui/glowing-effect.css">
+    <script type="importmap">
+    {
+      "imports": {
+        "motion": "https://cdn.jsdelivr.net/npm/motion@11.11.13/+esm"
+      }
+    }
+    </script>
+
+    <!-- SCRIPTS -->
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<style>
+    /* Hero Image Styles */
+    .forum-hero-image {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        transform-origin: center;
+        will-change: transform;
+    }
+
+    .app-container {
+        position: relative;
+        z-index: 5;
+        padding-top: 0 !important;
+        margin-top: -35vh;
+    }
+
+    @media (min-width: 900px) {
+        .members-grid {
+            grid-template-columns: repeat(3, 1fr) !important;
+        }
+    }
+</style>
+
+<body>
+
+    <!-- FADE OVERLAY (for bidirectional fade transition) -->
+    <div class="page-fade-overlay"></div>
+
+    <!-- 3D BACKGROUND (Same as forum-cs/home page) -->
+    <div id="canvas-container" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;"></div>
+
+    <!-- Hero Section Wrapper -->
+    <div class="hero-scroll-wrapper" style="height: 150vh; position: relative; z-index: 1;">
+        <div class="sticky-hero-container"
+            style="height: 100vh; position: sticky; top: 0; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+            <img src="../IMAGES/EXIS-logo.png" alt="EXIS Logo" class="forum-hero-image" id="forumHeroImage">
+        </div>
+    </div>
+
+
+
+    <!-- GLASS NAVIGATION -->
+    <header class="glass-header">
+        <!-- Separate Logo Circle -->
+        <a href="index.html" class="logo-link">
+            <img src="../IMAGES/isteofficiallogo.png" alt="ISTE" class="logo-img">
+        </a>
+
+        <nav class="glass-nav">
+            <button class="menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link"><img src="../ICON/home_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg"
+                        alt=""><span>Home</span></a>
+                <a href="events.html" class="nav-link"><img
+                        src="../ICON/event_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" alt=""><span>Events</span></a>
+                <a href="execom.html" class="nav-link"><img
+                        src="../ICON/groups_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" alt=""><span>Execom</span></a>
+                <a href="forums.html" class="nav-link"><img
+                        src="../ICON/communities_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg"
+                        alt=""><span>Forums</span></a>
+                <a href="gallery.html" class="nav-link"><img
+                        src="../ICON/gallery_thumbnail_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg"
+                        alt=""><span>Gallery</span></a>
+                <a href="contact.html" class="nav-link"><img
+                        src="../ICON/mail_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" alt=""><span>Contact</span></a>
+                <!-- More Button (Mobile Only) -->
+                <button class="nav-link nav-more-btn" aria-label="More menu" style="border: none; cursor: pointer;">
+                    <img src="../ICON/more_vert_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" alt="">
+                    <span>More</span>
+                </button>
+            </div>
+            <div class="nav-pebble"></div>
+        </nav>
+
+        <!-- ISTE Logo on Right -->
+        <a href="index.html" class="logo-link-right">
+            <img src="../IMAGES/istelogofinal.png" alt="ISTE Logo" class="logo-img-right">
+        </a>
+    </header>
+    <div class="nav-overlay"></div>
+
+
+    <main class="app-container content-section">
+
+        <div class="section-head reveal-text"
+            style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+            <!-- <img src="../IMAGES/EXIS-logo.png" alt="ECE Logo" style="height: 100px; margin-bottom: 1rem;"> -->
+
+            <p>Electronics Experience and Innovation Society</p>
+        </div>
+
+        <div class="glass-card reveal-text"
+            style="margin-bottom: 3rem; text-align: center; max-width: 800px; margin-left: auto; margin-right: auto;">
+            <p style="color: #ccc; font-size: 1rem; line-height: 1.6;">
+                Ignite your passion at EXIS (Electronic Experience and Innovation Society)! We are a dynamic
+                community uniting students captivated by the world of circuits, embedded systems,
+                telecommunications, and signal processing. Our members don't just learn about the future—we build it
+                together, collaborating on groundbreaking projects and exploring the thrilling advancements in
+                electronics.
+            </p>
+        </div>
+
+        <div class="grid-cards members-grid">
+
+            <!-- CHAIRMAN -->
+            <div class="glass-card reveal-text" style="text-align: center;">
+                <div
+                    style="width: 120px; height: 120px; border-radius: 50%; background: #333; margin: 0 auto 1rem; overflow: hidden;">
+                    <!-- Placeholder or Image -->
+                    <div
+                        style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: #666;">
+                        Photo</div>
+                </div>
+                <div class="card-title" style="font-size: 1.2rem;">####</div>
+                <div style="color: var(--accent-primary); font-size: 0.9rem; font-weight: 500; margin-bottom: 0.5rem;">
+                    CHAIRMAN</div>
+                <div style="color: #999; font-size: 0.8rem;">Note: Position Vacant</div>
+            </div>
+
+            <!-- VICE CHAIRMAN -->
+            <div class="glass-card reveal-text" style="text-align: center;">
+                <div
+                    style="width: 120px; height: 120px; border-radius: 50%; background: #333; margin: 0 auto 1rem; overflow: hidden;">
+                    <!-- Placeholder or Image -->
+                    <div
+                        style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: #666;">
+                        Photo</div>
+                </div>
+                <div class="card-title" style="font-size: 1.2rem;">####</div>
+                <div style="color: var(--accent-primary); font-size: 0.9rem; font-weight: 500; margin-bottom: 0.5rem;">
+                    VICE CHAIRMAN</div>
+                <div style="color: #999; font-size: 0.8rem;">Note: Position Vacant</div>
+            </div>
+
+            <!-- SECRETARY -->
+            <div class="glass-card reveal-text" style="text-align: center;">
+                <div
+                    style="width: 120px; height: 120px; border-radius: 50%; background: #333; margin: 0 auto 1rem; overflow: hidden;">
+                    <!-- Placeholder or Image -->
+                    <div
+                        style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: #666;">
+                        Photo</div>
+                </div>
+                <div class="card-title" style="font-size: 1.2rem;">####</div>
+                <div style="color: var(--accent-primary); font-size: 0.9rem; font-weight: 500; margin-bottom: 0.5rem;">
+                    SECRETARY</div>
+                <div style="color: #999; font-size: 0.8rem;">Note: Position Vacant</div>
+            </div>
+
+            <!-- JOINT SECRETARY -->
+            <div class="glass-card reveal-text" style="text-align: center;">
+                <div
+                    style="width: 120px; height: 120px; border-radius: 50%; background: #333; margin: 0 auto 1rem; overflow: hidden;">
+                    <!-- Placeholder or Image -->
+                    <div
+                        style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: #666;">
+                        Photo</div>
+                </div>
+                <div class="card-title" style="font-size: 1.2rem;">####</div>
+                <div style="color: var(--accent-primary); font-size: 0.9rem; font-weight: 500; margin-bottom: 0.5rem;">
+                    JOINT SECRETARY</div>
+                <div style="color: #999; font-size: 0.8rem;">Note: Position Vacant</div>
+            </div>
+
+            <!-- TREASURER -->
+            <div class="glass-card reveal-text" style="text-align: center;">
+                <div
+                    style="width: 120px; height: 120px; border-radius: 50%; background: #333; margin: 0 auto 1rem; overflow: hidden;">
+                    <!-- Placeholder or Image -->
+                    <div
+                        style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: #666;">
+                        Photo</div>
+                </div>
+                <div class="card-title" style="font-size: 1.2rem;">####</div>
+                <div style="color: var(--accent-primary); font-size: 0.9rem; font-weight: 500; margin-bottom: 0.5rem;">
+                    TREASURER</div>
+                <div style="color: #999; font-size: 0.8rem;">Note: Position Vacant</div>
+            </div>
+
+            <!-- EXECOM MEMBER -->
+            <div class="glass-card reveal-text" style="text-align: center;">
+                <div
+                    style="width: 120px; height: 120px; border-radius: 50%; background: #333; margin: 0 auto 1rem; overflow: hidden;">
+                    <!-- Placeholder or Image -->
+                    <div
+                        style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: #666;">
+                        Photo</div>
+                </div>
+                <div class="card-title" style="font-size: 1.2rem;">####</div>
+                <div style="color: var(--accent-primary); font-size: 0.9rem; font-weight: 500; margin-bottom: 0.5rem;">
+                    EXECOM MEMBER</div>
+                <div style="color: #999; font-size: 0.8rem;">Note: Position Vacant</div>
+            </div>
+
+        </div>
+
+        <!-- Events Section -->
+        <div class="section-head reveal-text" style="margin-top: 4rem; text-align: center;">
+            <h2>Events</h2>
+            <p>Recent & Upcoming Activities</p>
+        </div>
+
+        <div class="grid-cards" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+            <div class="glass-card reveal-text"
+                style="text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 300px;">
+                <div style="font-size: 4rem; margin-bottom: 1rem; opacity: 0.5;">✨</div>
+                <div class="card-title">Coming Soon</div>
+                <p class="card-desc">We are planning exciting events for you. Stay tuned!</p>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="glass-footer">
+        <h2>ISTE SCTCE</h2>
+        <p>© 2025 Sree Chithra Thirunal College of Engineering</p>
+    </footer>
+
+    <!-- LOGIC -->
+    <script src="../JS/modern.js"></script>
+    <script>
+        // Hero Image Logic
+        document.addEventListener('DOMContentLoaded', () => {
+            const heroImage = document.getElementById('forumHeroImage');
+            const scrollWrapper = document.querySelector('.hero-scroll-wrapper');
+
+            if (!heroImage || !scrollWrapper) return;
+
+            // Disable Animation on Mobile
+            if (window.innerWidth <= 768) return;
+
+            // Initial Zoom Effect
+            heroImage.style.transform = 'scale(1.0)';
+            heroImage.style.transition = 'transform 1.5s cubic-bezier(0.22, 1, 0.36, 1)';
+
+            setTimeout(() => {
+                if (window.scrollY < 50) {
+                    heroImage.style.transform = 'scale(0.75)';
+                }
+            }, 100);
+
+            function updateHero() {
+                const rect = scrollWrapper.getBoundingClientRect();
+                const wrapperHeight = scrollWrapper.offsetHeight;
+                const windowHeight = window.innerHeight;
+
+                const scrollDistance = wrapperHeight - windowHeight;
+                const scrolled = -rect.top;
+
+                let progress = Math.min(Math.max(scrolled / scrollDistance, 0), 1);
+
+                if (scrolled > 5) {
+                    heroImage.style.transition = 'none';
+                }
+
+                const maxScale = 0.75;
+                const minScale = 0.15;
+                const currentScale = maxScale - (progress * (maxScale - minScale));
+
+                // TranslateY Calculation
+                // User requested to pinch to center or upwards, no downwards.
+                // We'll keep it centered (0px translation).
+                const currentTranslate = 0;
+
+                heroImage.style.transform = `translateY(${currentTranslate}px) scale(${currentScale})`;
+            }
+
+            window.addEventListener('scroll', updateHero);
+            updateHero();
+        });
+    </script>
+    <a href="registration.html" class="floating-join-btn">Join Now</a>
+    <script type="module" src="../JS/init-glowing-effect.js"></script>
+</body>
+
+<script type="module" src="../JS/3d-background.js"></script>
+
+</html>

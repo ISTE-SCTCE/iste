@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glowing Effect Demo</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        border: "hsl(var(--border))",
+                        background: "hsl(var(--background))",
+                        foreground: "hsl(var(--foreground))",
+                        muted: {
+                            DEFAULT: "hsl(var(--muted))",
+                            foreground: "hsl(var(--muted-foreground))",
+                        },
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        :root {
+            --background: 0 0% 100%;
+            --foreground: 240 10% 3.9%;
+            --border: 240 5.9% 90%;
+            --muted: 240 4.8% 95.9%;
+            --muted-foreground: 240 3.8% 46.1%;
+        }
+
+        body {
+            background-color: hsl(var(--background));
+            color: hsl(var(--foreground));
+            font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+    </style>
+
+    <!-- Glowing Effect CSS -->
+    <link rel="stylesheet" href="../components/ui/glowing-effect.css">
+
+    <!-- Import Map for Motion -->
+    <script type="importmap">
+    {
+      "imports": {
+        "motion": "https://cdn.jsdelivr.net/npm/motion@11.11.13/+esm"
+      }
+    }
+    </script>
+</head>
+
+<body class="p-8 min-h-screen flex items-center justify-center bg-gray-50/50">
+
+    <div class="w-full max-w-7xl mx-auto">
+        <h1 class="text-3xl font-bold mb-8 text-center">Glowing Effect Demo</h1>
+
+        <ul
+            class="grid grid-cols-1 grid-rows-none gap-4 md:grid-cols-12 md:grid-rows-3 lg:gap-4 xl:max-h-[34rem] xl:grid-rows-2">
+
+            <!-- Item 1: Box -->
+            <li class="min-h-[14rem] list-none md:[grid-area:1/1/2/7] xl:[grid-area:1/1/2/5]">
+                <div
+                    class="relative h-full rounded-[1.25rem] border-[0.75px] border-border p-2 md:rounded-[1.5rem] md:p-3">
+                    <!-- Glowing Effect Target -->
+                    <div class="glowing-effect-target absolute inset-0 rounded-[inherit]"></div>
+
+                    <div
+                        class="relative flex h-full flex-col justify-between gap-6 overflow-hidden rounded-xl border-[0.75px] bg-background p-6 shadow-sm md:p-6">
+                        <div class="relative flex flex-1 flex-col justify-between gap-3">
+                            <div class="w-fit rounded-lg border-[0.75px] border-border bg-muted p-2">
+                                <!-- Box Icon -->
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="h-4 w-4">
+                                    <path
+                                        d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
+                                    <polyline points="3.27 6.96 12 12.01 20.73 6.96" />
+                                    <line x1="12" y1="22.08" x2="12" y2="12" />
+                                </svg>
+                            </div>
+                            <div class="space-y-3">
+                                <h3
+                                    class="pt-0.5 text-xl leading-[1.375rem] font-semibold tracking-[-0.04em] md:text-2xl md:leading-[1.875rem] text-foreground">
+                                    Do things the right way</h3>
+                                <h2
+                                    class="text-sm leading-[1.125rem] md:text-base md:leading-[1.375rem] text-muted-foreground">
+                                    Running out of copy so I'll write anything.</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+
+            <!-- Item 2: Settings -->
+            <li class="min-h-[14rem] list-none md:[grid-area:1/7/2/13] xl:[grid-area:2/1/3/5]">
+                <div
+                    class="relative h-full rounded-[1.25rem] border-[0.75px] border-border p-2 md:rounded-[1.5rem] md:p-3">
+                    <div class="glowing-effect-target absolute inset-0 rounded-[inherit]"></div>
+                    <div
+                        class="relative flex h-full flex-col justify-between gap-6 overflow-hidden rounded-xl border-[0.75px] bg-background p-6 shadow-sm md:p-6">
+                        <div class="relative flex flex-1 flex-col justify-between gap-3">
+                            <div class="w-fit rounded-lg border-[0.75px] border-border bg-muted p-2">
+                                <!-- Settings Icon -->
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path
+                                        d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.09a2 2 0 0 1-1-1.74v-.47a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.39a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z" />
+                                    <circle cx="12" cy="12" r="3" />
+                                </svg>
+                            </div>
+                            <div class="space-y-3">
+                                <h3
+                                    class="pt-0.5 text-xl leading-[1.375rem] font-semibold tracking-[-0.04em] md:text-2xl md:leading-[1.875rem] text-foreground">
+                                    The best AI code editor ever.</h3>
+                                <h2
+                                    class="text-sm leading-[1.125rem] md:text-base md:leading-[1.375rem] text-muted-foreground">
+                                    Yes, it's true. I'm not even kidding. Ask my mom if you don't believe me.</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+
+            <!-- Item 3: Lock -->
+            <li class="min-h-[14rem] list-none md:[grid-area:2/1/3/7] xl:[grid-area:1/5/3/8]">
+                <div
+                    class="relative h-full rounded-[1.25rem] border-[0.75px] border-border p-2 md:rounded-[1.5rem] md:p-3">
+                    <div class="glowing-effect-target absolute inset-0 rounded-[inherit]"></div>
+                    <div
+                        class="relative flex h-full flex-col justify-between gap-6 overflow-hidden rounded-xl border-[0.75px] bg-background p-6 shadow-sm md:p-6">
+                        <div class="relative flex flex-1 flex-col justify-between gap-3">
+                            <div class="w-fit rounded-lg border-[0.75px] border-border bg-muted p-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                                    <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                                </svg>
+                            </div>
+                            <div class="space-y-3">
+                                <h3
+                                    class="pt-0.5 text-xl leading-[1.375rem] font-semibold tracking-[-0.04em] md:text-2xl md:leading-[1.875rem] text-foreground">
+                                    You should buy Aceternity UI Pro</h3>
+                                <h2
+                                    class="text-sm leading-[1.125rem] md:text-base md:leading-[1.375rem] text-muted-foreground">
+                                    It's the best money you'll ever spend</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+
+            <!-- Item 4: Sparkles -->
+            <li class="min-h-[14rem] list-none md:[grid-area:2/7/3/13] xl:[grid-area:1/8/2/13]">
+                <div
+                    class="relative h-full rounded-[1.25rem] border-[0.75px] border-border p-2 md:rounded-[1.5rem] md:p-3">
+                    <div class="glowing-effect-target absolute inset-0 rounded-[inherit]"></div>
+                    <div
+                        class="relative flex h-full flex-col justify-between gap-6 overflow-hidden rounded-xl border-[0.75px] bg-background p-6 shadow-sm md:p-6">
+                        <div class="relative flex flex-1 flex-col justify-between gap-3">
+                            <div class="w-fit rounded-lg border-[0.75px] border-border bg-muted p-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path
+                                        d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z" />
+                                    <path d="M5 3v4" />
+                                    <path d="M9 3v4" />
+                                    <path d="M3 5h4" />
+                                    <path d="M3 9h4" />
+                                </svg>
+                            </div>
+                            <div class="space-y-3">
+                                <h3
+                                    class="pt-0.5 text-xl leading-[1.375rem] font-semibold tracking-[-0.04em] md:text-2xl md:leading-[1.875rem] text-foreground">
+                                    This card is also built by Cursor</h3>
+                                <h2
+                                    class="text-sm leading-[1.125rem] md:text-base md:leading-[1.375rem] text-muted-foreground">
+                                    I'm not even kidding. Ask my mom if you don't believe me.</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+
+            <!-- Item 5: Search -->
+            <li class="min-h-[14rem] list-none md:[grid-area:3/1/4/13] xl:[grid-area:2/8/3/13]">
+                <div
+                    class="relative h-full rounded-[1.25rem] border-[0.75px] border-border p-2 md:rounded-[1.5rem] md:p-3">
+                    <div class="glowing-effect-target absolute inset-0 rounded-[inherit]"></div>
+                    <div
+                        class="relative flex h-full flex-col justify-between gap-6 overflow-hidden rounded-xl border-[0.75px] bg-background p-6 shadow-sm md:p-6">
+                        <div class="relative flex flex-1 flex-col justify-between gap-3">
+                            <div class="w-fit rounded-lg border-[0.75px] border-border bg-muted p-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <circle cx="11" cy="11" r="8" />
+                                    <path d="m21 21-4.3-4.3" />
+                                </svg>
+                            </div>
+                            <div class="space-y-3">
+                                <h3
+                                    class="pt-0.5 text-xl leading-[1.375rem] font-semibold tracking-[-0.04em] md:text-2xl md:leading-[1.875rem] text-foreground">
+                                    Coming soon on Aceternity UI</h3>
+                                <h2
+                                    class="text-sm leading-[1.125rem] md:text-base md:leading-[1.375rem] text-muted-foreground">
+                                    I'm writing the code as I record this, no shit.</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+
+        </ul>
+    </div>
+
+    <!-- Initialization Script -->
+    <script type="module">
+        import { GlowingEffect } from "../components/ui/glowing-effect.js";
+
+        const targets = document.querySelectorAll('.glowing-effect-target');
+
+        targets.forEach(target => {
+            new GlowingEffect(target, {
+                spread: 40,
+                glow: true,
+                disabled: false,
+                proximity: 64,
+                inactiveZone: 0.01,
+                borderWidth: 6, // Kept visible for demo, but can be synced
+                movementDuration: 1.2
+            });
+        });
+    </script>
+</body>
+
+</html>

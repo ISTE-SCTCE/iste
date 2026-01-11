@@ -1,0 +1,560 @@
+/* ============================================
+   Workshop Page Styles - Consistent Design
+   ============================================ */
+
+/* Workshop Hero enhancements */
+.workshop-hero .workshop-title {
+    font-size: 5.5rem;
+    /* increase size for better visibility */
+    animation-duration: 0.8s;
+    /* slightly faster title animation */
+}
+
+/* Reduce glow effect on workshop hero elements */
+.workshop-hero .scroll-animate.is-visible {
+    box-shadow: none;
+    /* remove heavy glow */
+}
+
+/* Speed up general scroll animations to reduce stutter */
+.scroll-animate {
+    transition-duration: 0.4s;
+    /* faster transition */
+}
+
+/* Workshop Hero Section */
+.workshop-hero {
+    padding: 10rem 2rem 6rem;
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.workshop-hero-content {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+    animation: fadeInUp 1s ease-out;
+}
+
+.workshop-badge {
+    display: inline-block;
+    padding: 0.5rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-purple) 0%, #f5576c 100%);
+    /* Using theme color */
+    color: #fff;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 2rem;
+    box-shadow: 0 5px 20px rgba(245, 87, 108, 0.4);
+}
+
+.workshop-title {
+    font-size: clamp(2rem, 8vw, 4.5rem);
+    font-weight: 800;
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, var(--primary-purple) 0%, var(--dark-purple) 50%, #f093fb 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    animation: gradientShift 3s ease infinite;
+    background-size: 200% 200%;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+}
+
+.workshop-subtitle {
+    font-size: 1.8rem;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 2rem;
+    letter-spacing: 1px;
+}
+
+.workshop-description {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 3rem;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.workshop-meta {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+}
+
+.meta-item {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    /* Applying glass effect variables */
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    padding: 1rem 1.5rem;
+    border-radius: var(--border-radius);
+    border: 1px solid var(--glass-border);
+    transition: all var(--transition-speed) ease;
+}
+
+.meta-item:hover {
+    transform: translateY(-5px);
+    border-color: var(--glass-border-hover);
+    box-shadow: 0 10px 30px var(--glow-color);
+}
+
+.meta-icon {
+    font-size: 1.5rem;
+    color: var(--primary-purple);
+}
+
+.meta-text {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.95rem;
+}
+
+.meta-text strong {
+    color: #fff;
+    margin-right: 0.5rem;
+}
+
+.workshop-cta {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Using shared button styles */
+.learn-more-button {
+    background: transparent;
+    color: #fff;
+    border: 2px solid var(--glass-border);
+}
+
+.learn-more-button:hover {
+    background: var(--glass-bg-hover);
+    border-color: var(--glass-border-hover);
+    transform: translateY(-5px);
+}
+
+/* Section Headers */
+.section-header-center {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.section-title-gradient {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, var(--white) 0%, var(--primary-purple) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.section-subtitle {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* Workshop Overview Section */
+.workshop-overview {
+    padding: 6rem 0;
+}
+
+.overview-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+/* Applying glass effect to overview cards */
+.overview-card {
+    padding: 2.5rem 2rem;
+    text-align: center;
+    /* Add glass-effect class in HTML */
+}
+
+.overview-card:hover {
+    transform: translateY(-10px);
+    /* Hover effect is handled by the .glass-effect:hover style */
+}
+
+.overview-icon {
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+    display: block;
+    color: var(--primary-purple);
+}
+
+.overview-card h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #fff;
+}
+
+.overview-card p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* Workshop Schedule Section */
+.workshop-schedule {
+    padding: 6rem 0;
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.schedule-timeline {
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+    padding-left: 2rem;
+}
+
+.schedule-timeline::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(180deg, var(--primary-purple) 0%, var(--dark-purple) 100%);
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 3rem;
+    padding-left: 3rem;
+}
+
+.timeline-marker {
+    position: absolute;
+    left: -1.5rem;
+    top: 0.5rem;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary-purple) 0%, var(--dark-purple) 100%);
+    border: 4px solid #000;
+    box-shadow: 0 0 0 4px var(--glow-color);
+}
+
+.timeline-content {
+    /* Add glass-effect class in HTML */
+    padding: 2rem;
+    transition: all var(--transition-speed) ease;
+}
+
+.timeline-content:hover {
+    transform: translateX(10px);
+    /* Hover effect handled by .glass-effect:hover */
+}
+
+.timeline-time {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.timeline-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 0.8rem;
+    color: #fff;
+}
+
+.timeline-description {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* What You'll Learn Section */
+.workshop-learn {
+    padding: 6rem 0;
+}
+
+.learn-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+}
+
+.learn-item {
+    /* Add glass-effect class in HTML */
+    padding: 2.5rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.learn-item::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-purple) 0%, var(--dark-purple) 100%);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform var(--transition-slow) ease;
+}
+
+.learn-item:hover::before {
+    transform: scaleX(1);
+}
+
+.learn-item:hover {
+    transform: translateY(-10px);
+    /* Hover is handled by glass-effect */
+}
+
+.learn-number {
+    font-size: 4rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--primary-purple) 0%, var(--dark-purple) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+    margin-bottom: 1rem;
+    opacity: 0.3;
+}
+
+.learn-item h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #fff;
+}
+
+.learn-item p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* Workshop Benefits Section */
+.workshop-benefits {
+    padding: 6rem 0;
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.benefits-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.benefits-text h2 {
+    margin-bottom: 2rem;
+}
+
+.benefits-list {
+    list-style: none;
+    margin-bottom: 2.5rem;
+}
+
+.benefits-list li {
+    padding: 1rem 0;
+    padding-left: 2rem;
+    position: relative;
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.6;
+}
+
+.benefits-list li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    top: 1rem;
+    width: 24px;
+    height: 24px;
+    background: linear-gradient(135deg, var(--primary-purple) 0%, var(--dark-purple) 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-weight: bold;
+    font-size: 0.8rem;
+}
+
+
+.benefits-visual {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    /* Two columns */
+    gap: 1rem;
+    height: auto;
+    /* Natural height */
+    align-content: center;
+    max-width: 450px;
+    margin-left: auto;
+    margin-right: 0;
+    padding-top: 3rem;
+    /* Space from top */
+    padding-bottom: 2rem;
+    /* Space from bottom */
+}
+
+
+.visual-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 160px;
+    /* Increased height */
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    /* Minimal borders */
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    border-left: 1px solid rgba(255, 255, 255, 0.15);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    border-right: 1px solid rgba(0, 0, 0, 0.05);
+    /* Very flat shadow */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1),
+        inset 0 0 10px rgba(255, 255, 255, 0.02);
+    padding: 1.25rem;
+    /* More padding */
+}
+
+
+.visual-card-1 {
+    grid-column: 1 / -1;
+    /* Span full width */
+    background: linear-gradient(135deg, rgba(186, 102, 255, 0.1) 0%, rgba(186, 102, 255, 0.2) 100%);
+}
+
+.visual-card-2 {
+    background: linear-gradient(135deg, rgba(240, 147, 251, 0.15) 0%, rgba(245, 87, 108, 0.15) 100%);
+}
+
+.visual-card-3 {
+    background: linear-gradient(135deg, rgba(186, 102, 255, 0.1) 0%, rgba(240, 147, 251, 0.15) 100%);
+}
+
+.visual-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15),
+        0 0 10px var(--glow-color),
+        inset 0 0 10px rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.25);
+}
+
+.visual-content {
+    font-size: clamp(0.9rem, 2vw, 1.1rem);
+    text-align: center;
+    font-weight: 800;
+    background: linear-gradient(135deg, #fff 0%, var(--primary-purple) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    /* Reduced spacing for smaller text */
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .section-title-gradient {
+        font-size: clamp(1.5rem, 4vw, 3rem);
+    }
+
+    .benefits-content {
+        grid-template-columns: 1fr;
+    }
+
+    .benefits-visual {
+        /* order: -1; Removed to keep visuals below text on mobile, or consistent with 'right side' flow */
+        margin-top: 2rem;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .workshop-hero {
+        padding: 8rem 1rem 4rem;
+    }
+
+    .workshop-subtitle {
+        font-size: clamp(1.2rem, 4vw, 1.4rem);
+    }
+
+    .workshop-description {
+        font-size: 1rem;
+    }
+
+    .workshop-meta {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .workshop-cta {
+        flex-direction: column;
+        width: 100%;
+        gap: 1rem;
+    }
+
+    .register-button,
+    .register-button-large,
+    .learn-more-button {
+        width: 100%;
+        max-width: 100%;
+        text-align: center;
+        padding: 1.2rem 2rem;
+    }
+
+    .benefits-text {
+        text-align: center;
+    }
+
+    .benefits-text .register-button-large {
+        margin-top: 1rem;
+    }
+
+    .section-title-gradient {
+        font-size: 2rem;
+    }
+
+    .overview-grid,
+    .learn-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .schedule-timeline {
+        padding-left: 1.5rem;
+    }
+
+    .timeline-item {
+        padding-left: 2rem;
+    }
+}

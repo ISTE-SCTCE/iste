@@ -1,0 +1,68 @@
+/* CSS Variables and Styles for GlowingEffect */
+
+:root {
+    --black: #000000;
+}
+
+.glowing-effect-wrapper {
+    /* Ensure the wrapper is positioned correctly relative to its parent */
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    border-radius: inherit;
+}
+
+.rounded-inherit {
+    border-radius: inherit;
+}
+
+/* The inner container of the glow */
+.glow {
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    width: 100%;
+    height: 100%;
+}
+
+.glow::after {
+    content: "";
+    position: absolute;
+    border-radius: inherit;
+
+    /* inset: calc(-1 * var(--glowingeffect-border-width)); */
+    top: calc(-1 * var(--glowingeffect-border-width));
+    right: calc(-1 * var(--glowingeffect-border-width));
+    bottom: calc(-1 * var(--glowingeffect-border-width));
+    left: calc(-1 * var(--glowingeffect-border-width));
+
+    border: var(--glowingeffect-border-width) solid transparent;
+
+    background: var(--gradient);
+    background-attachment: fixed;
+
+    opacity: var(--active);
+    transition: opacity 300ms;
+
+    /* Masking Logic */
+    mask-clip: padding-box, border-box;
+    -webkit-mask-clip: padding-box, border-box;
+
+    mask-composite: intersect;
+    -webkit-mask-composite: source-in;
+    /* Frequently equivalent in WebKit for this purpose */
+
+    mask-image:
+        linear-gradient(#0000, #0000),
+        conic-gradient(from calc((var(--start) - var(--spread)) * 1deg),
+            transparent 0deg,
+            #fff,
+            transparent calc(var(--spread) * 2deg));
+
+    -webkit-mask-image:
+        linear-gradient(#0000, #0000),
+        conic-gradient(from calc((var(--start) - var(--spread)) * 1deg),
+            transparent 0deg,
+            #fff,
+            transparent calc(var(--spread) * 2deg));
+}

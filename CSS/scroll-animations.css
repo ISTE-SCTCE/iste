@@ -1,0 +1,289 @@
+/* ============================================
+   Scroll Animations - ISTE Frontend
+   Optimized for performance
+   ============================================ */
+
+/* Base animation setup */
+.scroll-animate {
+    opacity: 0;
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    transition-delay: var(--animation-delay, 0s);
+    will-change: transform, opacity;
+}
+
+.scroll-animate.is-visible {
+    opacity: 1;
+}
+
+/* Fade Up Animation */
+.animate-fade-up {
+    transform: translateY(50px);
+}
+
+.animate-fade-up.is-visible {
+    transform: translateY(0);
+}
+
+/* Scale Animation */
+.animate-scale {
+    transform: scale(0.85);
+    opacity: 0;
+}
+
+.animate-scale.is-visible {
+    transform: scale(1);
+    opacity: 1;
+}
+
+/* Slide Down Animation */
+.animate-slide-down {
+    transform: translateY(-30px);
+    opacity: 0;
+}
+
+.animate-slide-down.is-visible {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* Slide Up Animation */
+.animate-slide-up {
+    transform: translateY(30px);
+    opacity: 0;
+}
+
+.animate-slide-up.is-visible {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* Fade Scale Animation */
+.animate-fade-scale {
+    transform: scale(0.9);
+    opacity: 0;
+}
+
+.animate-fade-scale.is-visible {
+    transform: scale(1);
+    opacity: 1;
+}
+
+/* Bounce In Animation */
+.animate-bounce-in {
+    transform: scale(0.8);
+    opacity: 0;
+}
+
+.animate-bounce-in.is-visible {
+    transform: scale(1);
+    opacity: 1;
+    animation: bounceIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+@keyframes bounceIn {
+    0% {
+        transform: scale(0.8);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Blur In Animation */
+.animate-blur {
+    filter: blur(10px);
+    opacity: 0;
+}
+
+.animate-blur.is-visible {
+    filter: blur(0);
+    opacity: 1;
+}
+
+/* ============================================
+   Enhanced Glow Effects on Scroll
+   ============================================ */
+
+/* Cards get enhanced glow when visible */
+.scroll-animate.is-visible.stat-card,
+.scroll-animate.is-visible.forum-card,
+.scroll-animate.is-visible.member-card,
+.scroll-animate.is-visible.news-card,
+.scroll-animate.is-visible.event-card,
+.scroll-animate.is-visible.workshop-card {
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.4),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.3),
+        0 2px 8px rgba(0, 0, 0, 0.4),
+        0 0 30px rgba(186, 102, 255, 0.25);
+    animation: glowPulse 3s ease-in-out infinite;
+}
+
+@keyframes glowPulse {
+
+    0%,
+    100% {
+        box-shadow:
+            inset 0 1px 0 rgba(255, 255, 255, 0.4),
+            inset 0 -1px 0 rgba(0, 0, 0, 0.3),
+            0 2px 8px rgba(0, 0, 0, 0.4),
+            0 0 30px rgba(186, 102, 255, 0.25);
+    }
+
+    50% {
+        box-shadow:
+            inset 0 1px 0 rgba(255, 255, 255, 0.4),
+            inset 0 -1px 0 rgba(0, 0, 0, 0.3),
+            0 2px 8px rgba(0, 0, 0, 0.4),
+            0 0 40px rgba(186, 102, 255, 0.35);
+    }
+}
+
+/* ============================================
+   Scroll Progress Bar
+   ============================================ */
+
+.scroll-progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #BA66FF, #667EEA, #BA66FF);
+    background-size: 200% 100%;
+    z-index: 10000;
+    width: 0%;
+    transition: width 0.1s ease-out;
+    animation: progressGradient 3s linear infinite;
+    box-shadow: 0 0 10px rgba(186, 102, 255, 0.5),
+        0 0 20px rgba(186, 102, 255, 0.3);
+    display: none; /* Hide the scroll progress bar */
+}
+
+@keyframes progressGradient {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    100% {
+        background-position: 200% 50%;
+    }
+}
+
+/* ============================================
+   Stagger Animation Delays
+   ============================================ */
+
+/* Apply progressive delays to elements in a container */
+.stats-grid .stat-card:nth-child(1) {
+    --animation-delay: 0s;
+}
+
+.stats-grid .stat-card:nth-child(2) {
+    --animation-delay: 0.1s;
+}
+
+.stats-grid .stat-card:nth-child(3) {
+    --animation-delay: 0.2s;
+}
+
+.stats-grid .stat-card:nth-child(4) {
+    --animation-delay: 0.3s;
+}
+
+.news-scroll .news-card:nth-child(1) {
+    --animation-delay: 0s;
+}
+
+.news-scroll .news-card:nth-child(2) {
+    --animation-delay: 0.1s;
+}
+
+.news-scroll .news-card:nth-child(3) {
+    --animation-delay: 0.15s;
+}
+
+.news-scroll .news-card:nth-child(4) {
+    --animation-delay: 0.2s;
+}
+
+.news-scroll .news-card:nth-child(5) {
+    --animation-delay: 0.25s;
+}
+
+.events-scroll .event-card:nth-child(1) {
+    --animation-delay: 0s;
+}
+
+.events-scroll .event-card:nth-child(2) {
+    --animation-delay: 0.1s;
+}
+
+.events-scroll .event-card:nth-child(3) {
+    --animation-delay: 0.15s;
+}
+
+.events-scroll .event-card:nth-child(4) {
+    --animation-delay: 0.2s;
+}
+
+.events-scroll .event-card:nth-child(5) {
+    --animation-delay: 0.25s;
+}
+
+.footer-content .footer-section:nth-child(1) {
+    --animation-delay: 0s;
+}
+
+.footer-content .footer-section:nth-child(2) {
+    --animation-delay: 0.1s;
+}
+
+.footer-content .footer-section:nth-child(3) {
+    --animation-delay: 0.2s;
+}
+
+.footer-content .footer-section:nth-child(4) {
+    --animation-delay: 0.3s;
+}
+
+/* ============================================
+   Responsive Adjustments
+   ============================================ */
+
+@media (max-width: 768px) {
+
+    /* Reduce animation intensity on mobile for better performance */
+    .scroll-animate {
+        transition-duration: 0.5s;
+    }
+
+    /* Smaller transforms on mobile */
+    .animate-fade-up {
+        transform: translateY(30px);
+    }
+
+    .animate-scale {
+        transform: scale(0.9);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    /* Respect user's motion preferences */
+    .scroll-animate,
+    .scroll-animate * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    .scroll-animate {
+        transform: none !important;
+        opacity: 1 !important;
+    }
+}

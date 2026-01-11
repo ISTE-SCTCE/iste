@@ -1,0 +1,110 @@
+/* Styles specific to join.html */
+.join-main {
+    padding-top: 8rem;
+    padding-bottom: 4rem;
+}
+
+.join-hero .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* Consistent Page Title */
+.join-title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    background: linear-gradient(135deg, var(--white) 0%, var(--primary-purple) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(0 2px 8px var(--glow-color-strong));
+}
+
+.join-sub {
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 3rem;
+    font-size: 1.15rem;
+    text-align: center;
+    letter-spacing: 0.5px;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.join-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* Centered single column */
+    justify-items: center;
+    gap: 3rem;
+    margin-top: 2rem;
+}
+
+.why-join {
+    max-width: 800px;
+    /* This element should have the "glass-effect" class in the HTML */
+    padding: 3rem;
+}
+
+.why-title {
+    font-size: 2.2rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    color: var(--white);
+}
+
+.why-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.why-list li {
+    margin-bottom: 1.5rem;
+}
+
+.why-list h4 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: var(--primary-purple); /* Use theme color */
+}
+
+.why-list p {
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.6;
+}
+
+.why-join-cta {
+    text-align: center;
+    margin-top: 2.5rem;
+}
+
+.join-cta {
+    display: inline-block;
+    padding: 1rem 2.5rem;
+    font-size: 1rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, rgba(138, 43, 226, 0.3) 0%, rgba(75, 0, 130, 0.3) 100%);
+    color: #fff;
+    border: 2px solid rgba(138, 43, 226, 0.5);
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    box-shadow: 0 6px 20px rgba(138, 43, 226, 0.2);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    text-decoration: none !important;
+    position: relative;
+    overflow: hidden;
+}
+
+.join-cta:hover {
+    background: linear-gradient(135deg, rgba(138, 43, 226, 0.5) 0%, rgba(75, 0, 130, 0.5) 100%);
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 8px 25px rgba(138, 43, 226, 0.3), 0 0 30px rgba(138, 43, 226, 0.2);
+    border-color: rgba(138, 43, 226, 0.7);
+}

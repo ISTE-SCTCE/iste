@@ -1,0 +1,61 @@
+/* HTML Course Page Specific Styles */
+
+/* Use a more specific selector to avoid interfering with global styles */
+.html-course-content p {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-primary, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif); /* Use CSS variable */
+}
+
+.html-course-content .title-text {
+    font-size: 2rem; /* Responsive font size */
+    font-weight: 700;
+    color: var(--primary-purple, #BA66FF); /* Use CSS variable */
+    margin-bottom: 0.5rem;
+}
+
+.html-course-content .subtitle-text {
+    margin-top: 5px;
+    font-size: 1.2rem;
+    color: var(--white, #ffffff); /* Use CSS variable */
+    opacity: 0.8;
+}
+
+.html-course-content .content-text {
+    margin-top: 40px;
+    font-size: 1rem;
+    color: var(--white, #ffffff); /* Use CSS variable */
+    margin-bottom: 40px;
+    max-width: 600px; /* More readable width */
+    line-height: 1.6;
+}
+
+/* Style the button consistent with the rest of the site */
+.html-course-content .course-button {
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--white, #ffffff);
+    background: linear-gradient(135deg, rgba(138, 43, 226, 0.3) 0%, rgba(75, 0, 130, 0.3) 100%);
+    border: 2px solid var(--primary-purple, #BA66FF);
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    box-shadow: 0 6px 20px rgba(138, 43, 226, 0.2);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+.html-course-content .course-button:hover {
+    background: linear-gradient(135deg, rgba(138, 43, 226, 0.5) 0%, rgba(75, 0, 130, 0.5) 100%);
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 8px 25px rgba(138, 43, 226, 0.3), 0 0 30px rgba(138, 43, 226, 0.2);
+    border-color: rgba(138, 43, 226, 0.7);
+}
+
+.html-course-content .course-button:active {
+    transform: translateY(0);
+    background-color: var(--dark-purple, #8A2BE2); /* Use CSS variable */
+}

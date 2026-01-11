@@ -1,0 +1,340 @@
+/* Intro Animation Styles - Mobile Optimized */
+.intro-animation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
+    /* Dynamic viewport height for mobile */
+    background: #000;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: introBackground 5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    overflow: hidden;
+    -webkit-overflow-scrolling: touch;
+}
+
+.intro-logo-container {
+    position: relative;
+    text-align: center;
+    animation: logoFlyToHeader 5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    will-change: transform;
+}
+
+.intro-logo {
+    width: 300px;
+    height: 300px;
+    max-width: 80vw;
+    max-height: 80vw;
+    object-fit: contain;
+    opacity: 0;
+    transform: translateX(0);
+    animation: logoSwipeAndFloat 5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    filter: drop-shadow(0 0 10px rgba(186, 102, 255, 0.2)) brightness(2);
+    clip-path: inset(0 100% 0 0);
+    will-change: transform, opacity, filter;
+}
+
+@keyframes introBackground {
+    0% {
+        background: #000;
+        opacity: 1;
+    }
+
+    80% {
+        background: #000;
+        opacity: 1;
+    }
+
+    100% {
+        background: #000;
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+@keyframes logoFlyToHeader {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    60% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    80% {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+}
+
+@keyframes logoSwipeAndFloat {
+    0% {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+        filter: drop-shadow(0 0 10px rgba(186, 102, 255, 0.2)) brightness(2.5);
+        clip-path: inset(0 100% 0 0);
+    }
+
+    20% {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+        filter: drop-shadow(0 0 20px rgba(186, 102, 255, 0.4)) brightness(1.8);
+        clip-path: inset(0 70% 0 0);
+    }
+
+    40% {
+        opacity: 1;
+        transform: translateX(0) scale(1.02);
+        filter: drop-shadow(0 0 30px rgba(186, 102, 255, 0.6)) brightness(1.2);
+        clip-path: inset(0 45% 0 0);
+    }
+
+    55% {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+        filter: drop-shadow(0 0 40px rgba(186, 102, 255, 0.8)) brightness(1);
+        clip-path: inset(0 25% 0 0);
+    }
+
+    85% {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+        filter: drop-shadow(0 0 30px rgba(186, 102, 255, 0.6)) brightness(1);
+        clip-path: inset(0 0 0 0);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateX(0) scale(1);
+        filter: drop-shadow(0 0 10px rgba(186, 102, 255, 0.2)) brightness(1);
+        clip-path: inset(0 0 0 0);
+    }
+}
+
+/* Mobile Responsive Adjustments */
+@media (max-width: 768px) {
+    .intro-logo {
+        width: 250px;
+        height: 250px;
+        max-width: 70vw;
+        max-height: 70vw;
+    }
+
+    @keyframes logoFlyToHeader {
+        0% {
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        60% {
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        80% {
+            transform: scale(0.9);
+            opacity: 0;
+        }
+
+        100% {
+            transform: scale(0.9);
+            opacity: 0;
+        }
+    }
+
+    @keyframes logoSwipeAndFloat {
+        0% {
+            opacity: 1;
+            transform: translateX(0) scale(1);
+            filter: drop-shadow(0 0 10px rgba(186, 102, 255, 0.2)) brightness(2.5);
+            clip-path: inset(0 100% 0 0);
+        }
+
+        20% {
+            opacity: 1;
+            transform: translateX(0) scale(1);
+            filter: drop-shadow(0 0 20px rgba(186, 102, 255, 0.4)) brightness(1.8);
+            clip-path: inset(0 70% 0 0);
+        }
+
+        40% {
+            opacity: 1;
+            transform: translateX(0) scale(1.02);
+            filter: drop-shadow(0 0 30px rgba(186, 102, 255, 0.6)) brightness(1.2);
+            clip-path: inset(0 45% 0 0);
+        }
+
+        55% {
+            opacity: 1;
+            transform: translateX(0) scale(1);
+            filter: drop-shadow(0 0 40px rgba(186, 102, 255, 0.8)) brightness(1);
+            clip-path: inset(0 25% 0 0);
+        }
+
+        70% {
+            opacity: 1;
+            transform: translateX(0) scale(1);
+            filter: drop-shadow(0 0 30px rgba(186, 102, 255, 0.6)) brightness(1);
+            clip-path: inset(0 0 0 0);
+        }
+
+        85% {
+            opacity: 1;
+            transform: translateX(0) scale(1);
+            filter: drop-shadow(0 0 20px rgba(186, 102, 255, 0.4)) brightness(1);
+            clip-path: inset(0 0 0 0);
+        }
+
+        100% {
+            opacity: 0;
+            transform: translateX(0) scale(1);
+            filter: drop-shadow(0 0 10px rgba(186, 102, 255, 0.2)) brightness(1);
+            clip-path: inset(0 0 0 0);
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    .intro-logo {
+        width: 200px;
+        height: 200px;
+        max-width: 60vw;
+        max-height: 60vw;
+    }
+
+    @keyframes logoFlyToHeader {
+        0% {
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        60% {
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        80% {
+            transform: scale(0.9);
+            opacity: 0;
+        }
+
+        100% {
+            transform: scale(0.9);
+            opacity: 0;
+        }
+    }
+
+    @keyframes logoSwipeAndFloat {
+        0% {
+            opacity: 1;
+            transform: translateX(0) scale(1);
+            filter: drop-shadow(0 0 10px rgba(186, 102, 255, 0.2)) brightness(2.5);
+            clip-path: inset(0 100% 0 0);
+        }
+
+        20% {
+            opacity: 1;
+            transform: translateX(0) scale(1);
+            filter: drop-shadow(0 0 20px rgba(186, 102, 255, 0.4)) brightness(1.8);
+            clip-path: inset(0 70% 0 0);
+        }
+
+        40% {
+            opacity: 1;
+            transform: translateX(0) scale(1.02);
+            filter: drop-shadow(0 0 30px rgba(186, 102, 255, 0.6)) brightness(1.2);
+            clip-path: inset(0 45% 0 0);
+        }
+
+        55% {
+            opacity: 1;
+            transform: translateX(0) scale(1);
+            filter: drop-shadow(0 0 40px rgba(186, 102, 255, 0.8)) brightness(1);
+            clip-path: inset(0 25% 0 0);
+        }
+
+        70% {
+            opacity: 1;
+            transform: translateX(0) scale(1);
+            filter: drop-shadow(0 0 30px rgba(186, 102, 255, 0.6)) brightness(1);
+            clip-path: inset(0 0 0 0);
+        }
+
+        85% {
+            opacity: 1;
+            transform: translateX(0) scale(1);
+            filter: drop-shadow(0 0 20px rgba(186, 102, 255, 0.4)) brightness(1);
+            clip-path: inset(0 0 0 0);
+        }
+
+        100% {
+            opacity: 0;
+            transform: translateX(0) scale(1);
+            filter: drop-shadow(0 0 10px rgba(186, 102, 255, 0.2)) brightness(1);
+            clip-path: inset(0 0 0 0);
+        }
+    }
+}
+
+/* Landscape Orientation Adjustments */
+@media (max-width: 768px) and (orientation: landscape) {
+    @keyframes logoFlyToHeader {
+        0% {
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        60% {
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        80% {
+            transform: scale(0.9);
+            opacity: 0;
+        }
+
+        100% {
+            transform: scale(0.9);
+            opacity: 0;
+        }
+    }
+}
+
+@media (max-width: 480px) and (orientation: landscape) {
+    @keyframes logoFlyToHeader {
+        0% {
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        60% {
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        80% {
+            transform: scale(0.9);
+            opacity: 0;
+        }
+
+        100% {
+            transform: scale(0.9);
+            opacity: 0;
+        }
+    }
+}

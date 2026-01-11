@@ -23,6 +23,9 @@
     border-radius: inherit;
     width: 100%;
     height: 100%;
+    /* GPU acceleration for smooth animations */
+    will-change: transform;
+    transform: translateZ(0);
 }
 
 .glow::after {
@@ -30,7 +33,6 @@
     position: absolute;
     border-radius: inherit;
 
-    /* inset: calc(-1 * var(--glowingeffect-border-width)); */
     top: calc(-1 * var(--glowingeffect-border-width));
     right: calc(-1 * var(--glowingeffect-border-width));
     bottom: calc(-1 * var(--glowingeffect-border-width));
@@ -42,25 +44,26 @@
     background-attachment: fixed;
 
     opacity: var(--active);
-    transition: opacity 300ms;
+    transition: opacity 300ms ease-out;
 
-    /* Masking Logic */
+    /* Masking Logic - FIXED: use exclude to show only the border */
     mask-clip: padding-box, border-box;
     -webkit-mask-clip: padding-box, border-box;
 
-    mask-composite: intersect;
-    -webkit-mask-composite: source-in;
-    /* Frequently equivalent in WebKit for this purpose */
+    /* Use exclude to subtract inner area, leaving only the border visible */
+    mask-composite: exclude;
+    -webkit-mask-composite: xor;
 
+    /* Opaque mask for the inner area, conic gradient for the rotating highlight */
     mask-image:
-        linear-gradient(#0000, #0000),
+        linear-gradient(#fff, #fff),
         conic-gradient(from calc((var(--start) - var(--spread)) * 1deg),
             transparent 0deg,
             #fff,
             transparent calc(var(--spread) * 2deg));
 
     -webkit-mask-image:
-        linear-gradient(#0000, #0000),
+        linear-gradient(#fff, #fff),
         conic-gradient(from calc((var(--start) - var(--spread)) * 1deg),
             transparent 0deg,
             #fff,

@@ -15,7 +15,8 @@
     <link rel="stylesheet" href="../CSS/main.css">
     <link rel="stylesheet" href="../CSS/intro-animation.css">
     <link rel="stylesheet" href="../components/ui/glowing-effect.css">
-    <link rel="stylesheet" href="../components/ui/execom-popup.css">
+    <link rel="stylesheet" href="../components/ui/shiny-text.css">
+    <link rel="stylesheet" href="../components/ui/scroll-reveal.css">
     <script type="importmap">
     {
       "imports": {
@@ -31,6 +32,7 @@
 </head>
 
 <body>
+    <!-- (Body content unchanged until scripts at end) -->
 
     <!-- FADE OVERLAY (for smooth transition when returning from other pages) -->
     <div class="page-fade-overlay"></div>
@@ -95,7 +97,7 @@
 
         <!-- HERO SECTION -->
         <section id="home" class="hero-revamp" style="padding-top: 250px;">
-            <h1 class="hero-super-title reveal-text">ISTE<br>Student Chapter</h1>
+            <h1 class="hero-super-title reveal-text" id="shiny-title">ISTE<br>Student Chapter</h1>
             <p class="hero-desc reveal-text">Empowering the next generation of engineers
                 with innovation, technical excellence, and leadership.</p>
             <div class="hero-actions reveal-text">
@@ -104,39 +106,33 @@
             </div>
         </section>
 
-        <!-- EXECOM CALL -->
-        <section class="content-section">
-            <div class="glass-card reveal-text"
-                style="text-align: center; border: 1px solid rgba(112, 0, 223, 0.3); box-shadow: 0 0 30px rgba(112, 0, 223, 0.1);">
-                <div class="section-head" style="margin-bottom: 2rem;">
-                    <h2 style="color: #fff;">We Are Hiring</h2>
-                    <p style="color: var(--accent-primary);">Execom Call 2025</p>
-                </div>
-                <p style="max-width: 700px; margin: 0 auto 2.5rem; line-height: 1.6; color: var(--text-muted);">
-                    The ISTE Student Chapter is seeking passionate individuals to join our Executive Committee.
-                    If you have the drive to lead, innovate, and make a difference, we want to hear from you.
-                </p>
-                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-                    <a href="execom-call.html" class="magnetic-btn">View Open Roles</a>
-                </div>
-            </div>
-        </section>
-
         <!-- ABOUT US -->
-        <section class="content-section">
-            <div class="section-head reveal-text">
-                <h2>About Us</h2>
-                <p>Who we are and what we stand for</p>
-            </div>
-            <div class="glass-card reveal-text" style="max-width: 900px; margin: 0 auto; text-align: center;">
-                <p style="color: var(--text-muted); line-height: 1.8; font-size: 1.1rem;">
-                    Established in 2004, the ISTE Student Chapter at Sree Chithra Thirunal College of Engineering
-                    is dedicated to equipping students with the technical know-how, practical application skills,
-                    and leadership qualities needed to excel in the modern engineering landscape. We strive to
-                    redefine technical education by fostering innovation, collaboration, and excellence. Our chapter
-                    has grown to become a vibrant technical community, bringing together students passionate about
-                    technology, research, and continuous learning.
-                </p>
+        <section class="content-section" style="padding: 8rem 5%; position: relative;">
+            <div class="about-container"
+                style="display: flex; flex-direction: column; gap: 2rem; border-left: 2px solid rgba(112, 0, 223, 0.4); padding-left: 2rem; position: relative;">
+                <!-- Decorative Glow behind the line -->
+                <div
+                    style="position: absolute; left: -2px; top: 0; bottom: 0; width: 4px; background: var(--accent-primary); box-shadow: 0 0 15px var(--accent-primary); opacity: 0.6;">
+                </div>
+
+                <div class="section-head reveal-text" style="text-align: left; margin-bottom: 0;">
+                    <h2
+                        style="font-size: 4rem; background: linear-gradient(90deg, #fff, #aaa); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 0.5rem;">
+                        About Us</h2>
+                    <p
+                        style="color: var(--accent-primary); font-size: 1.2rem; letter-spacing: 2px; text-transform: uppercase;">
+                        Who we are</p>
+                </div>
+
+                <div class="reveal-text">
+                    <p id="about-us-text"
+                        style="color: rgba(255, 255, 255, 0.9); line-height: 1.7; font-size: 1.8rem; font-weight: 400; max-width: 1000px;">
+                        Established in 2004, the ISTE Student Chapter at Sree Chithra Thirunal College of Engineering
+                        is dedicated to equipping students with the technical know-how, practical application skills,
+                        and leadership qualities needed to excel in the modern engineering landscape. We strive to
+                        redefine technical education by fostering innovation, collaboration, and excellence.
+                    </p>
+                </div>
             </div>
         </section>
 
@@ -201,60 +197,36 @@
     <!-- Glowing Effect Initialization -->
     <script type="module" src="../JS/init-glowing-effect.js"></script>
 
-    <!-- EXECOM POPUP (Injected) -->
-    <div id="execom-popup-overlay" class="execom-popup-overlay" role="dialog" aria-modal="true"
-        aria-labelledby="popup-title" aria-hidden="true" style="display: none;">
-        <div class="execom-popup-container">
-            <button id="execom-popup-close" class="execom-popup-close" aria-label="Close Popup">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <line x1="18" y1="6" x2="6" y2="18"></line>
-                    <line x1="6" y1="6" x2="18" y2="18"></line>
-                </svg>
-            </button>
-            <div class="popup-particles" aria-hidden="true">
-                <div class="particle p1"></div>
-                <div class="particle p2"></div>
-                <div class="particle p3"></div>
-            </div>
-            <div class="execom-popup-content-wrapper">
-                <div class="execom-popup-image">
-                    <div class="image-shimmer-overlay"></div>
-                    <img src="../IMAGES/EXECOM%20call.png" alt="Execom Call 2025" id="popup-hero-image">
-                </div>
-                <div class="execom-popup-text">
-                    <span class="popup-eyebrow">We Are Hiring</span>
-                    <h2 id="popup-title" class="popup-title">Join the<br>Executive Committee</h2>
-                    <p class="popup-description">
-                        Be a part of a dynamic team driving innovation and excellence.
-                        Develop leadership skills, network with like-minded peers, and make an impact.
-                    </p>
-                    <div class="popup-actions">
-                        <a href="execom-call.html" class="popup-cta-btn">
-                            <span>Apply Now</span>
-                            <div class="btn-glow"></div>
-                        </a>
-                    </div>
-                    <div class="popup-footer">
-                        <label class="popup-checkbox-label">
-                            <input type="checkbox" id="popup-dont-show-again">
-                            <span class="checkbox-custom"></span>
-                            <span class="checkbox-text">Don't show this again</span>
-                        </label>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Execom Popup Logic -->
+    <!-- Shiny Text Initialization -->
     <script type="module">
-        import ExecomPopup from '../components/ui/execom-popup.js';
+        import ShinyText from '../components/ui/shiny-text.js';
 
-        const popup = new ExecomPopup({
-            delay: 1500,
-            heroImage: '../IMAGES/EXECOM%20call.png'
-        });
-        popup.init();
+        const shinyTitle = document.getElementById('shiny-title');
+        if (shinyTitle) {
+            new ShinyText(shinyTitle, {
+                speed: 3,
+                disabled: false,
+                color: '#b5b5b5', // Adjust to match design (maybe white/grey for regular text)
+                shineColor: '#ffffff',
+                spread: 120
+                // Default options are usually fine, maybe tweak colors
+            });
+        }
+    </script>
+
+    <!-- Scroll Reveal Initialization -->
+    <script type="module">
+        import ScrollReveal from '../components/ui/scroll-reveal.js';
+
+        const aboutText = document.getElementById('about-us-text');
+        if (aboutText) {
+            new ScrollReveal(aboutText, {
+                baseOpacity: 0.2, // Slightly more visible start
+                baseRotation: 2,   // Subtle rotation
+                blurStrength: 4,
+                wordAnimationEnd: 'bottom 60%' // Finish animation when element is more centered
+            });
+        }
     </script>
 </body>
 

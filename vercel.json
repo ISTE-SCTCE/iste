@@ -21,10 +21,6 @@
       "destination": "/HTML/execom.html"
     },
     {
-      "source": "/execom-call.html",
-      "destination": "/HTML/execom-call.html"
-    },
-    {
       "source": "/forums.html",
       "destination": "/HTML/forums.html"
     },

@@ -1,0 +1,12 @@
+.shiny-text {
+    display: inline-block;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200% auto;
+}
+
+/* Ensure it works on block elements if applied directly */
+.shiny-text.block {
+    display: block;
+}

@@ -1,0 +1,27 @@
+.scroll-reveal {
+    margin: 20px 0;
+    /* Ensure 3D transforms work nicely */
+    transform-style: preserve-3d;
+    perspective: 1000px;
+}
+
+.scroll-reveal-text {
+    /* Use user's font preferences or inheritance */
+    font-size: inherit;
+    line-height: inherit;
+    font-weight: inherit;
+    margin: 0;
+}
+
+/* Override for the specific About Us usage if needed */
+.about-scroll-reveal {
+    font-size: inherit;
+    color: inherit;
+}
+
+.word {
+    display: inline-block;
+    white-space: pre-wrap;
+    /* Preserve spaces appropriately */
+    will-change: opacity, filter, transform;
+}

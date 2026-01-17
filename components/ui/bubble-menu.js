@@ -34,33 +34,42 @@ export default class BubbleMenu {
         this.toggleBtn.addEventListener('click', () => this.toggle());
 
         // 4. Handle Existing Mobile Menu Conflict
-        // Force hide the old .glass-header on mobile if we want to replace it completely
-        // OR we just hide the .menu-toggle of the old nav and inject this one.
-        // The CSS handles showing .bubble-menu only on mobile.
-        // We might need to hide the *original* hamburger button if it's still visible.
         const oldToggle = document.querySelector('.glass-nav .menu-toggle');
         if (oldToggle) oldToggle.style.display = 'none'; // Hide old toggle
 
-        // 5. Scroll Handling
+        // 5. Scroll Handling with requestAnimationFrame optimization
         this.lastScrollTop = 0;
         this.scrollThreshold = 50;
-        window.addEventListener('scroll', () => this.handleScroll(), { passive: true });
+        this.ticking = false;
+
+        window.addEventListener('scroll', () => {
+            if (!this.ticking) {
+                window.requestAnimationFrame(() => {
+                    this.handleScroll();
+                    this.ticking = false;
+                });
+                this.ticking = true;
+            }
+        }, { passive: true });
     }
 
     handleScroll() {
         if (this.isOpen) return; // Don't hide if menu is open
 
         const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+        if (currentScroll < 0) return; // Ignore negative scrolling (iOS)
+
+        if (Math.abs(currentScroll - this.lastScrollTop) < 10) return; // Small threshold to avoid jitter
 
         if (currentScroll > this.lastScrollTop && currentScroll > this.scrollThreshold) {
             // Scrolling Down -> Hide
             this.container.classList.add('hidden');
-        } else {
+        } else if (currentScroll < this.lastScrollTop) {
             // Scrolling Up -> Show
             this.container.classList.remove('hidden');
         }
 
-        this.lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // For Mobile or negative scrolling
+        this.lastScrollTop = currentScroll;
     }
 
     createMarkup() {
@@ -131,10 +140,11 @@ export default class BubbleMenu {
         this.bubbles.forEach((bubble, i) => {
             const delay = i * this.options.staggerDelay;
 
+            // Force3D for smoother animation
             gsap.to(bubble, {
                 scale: 1,
                 duration: this.options.animationDuration,
-                ease: 'back.out(1.2)', // Slightly less bounce for performance
+                ease: 'back.out(1.2)',
                 delay: delay,
                 force3D: true
             });
@@ -162,14 +172,14 @@ export default class BubbleMenu {
         gsap.to(this.labels, {
             y: 24,
             autoAlpha: 0,
-            duration: 0.15, // Faster
+            duration: 0.15,
             ease: 'power3.in',
             force3D: true
         });
 
         gsap.to(this.bubbles, {
             scale: 0,
-            duration: 0.2, // Keep snappy
+            duration: 0.2,
             ease: 'power3.in',
             force3D: true,
             onComplete: () => {

@@ -130,7 +130,7 @@ export class MasonryGallery {
                 // Add content
                 if (item.type === 'video') {
                     el.innerHTML = `
-                        <video src="${item.src}" muted loop playsinline style="width: 100%; height: 100%; object-fit: cover; display: block;"></video>
+                        <video src="${item.src}" muted loop playsinline preload="metadata" style="width: 100%; height: 100%; object-fit: cover; display: block;"></video>
                         <div class="card-overlay" style="position: absolute; bottom: 0; left: 0; right: 0; padding: 1.5rem; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); opacity: 0; transition: opacity 0.3s;">
                             <h3 style="color: white; margin: 0; font-size: 1.1rem;">${item.title || ''}</h3>
                         </div>
@@ -227,13 +227,16 @@ export class MasonryGallery {
         const overlay = el.querySelector('.card-overlay');
         if (overlay) gsap.to(overlay, { opacity: 1, duration: 0.3 });
 
-        const colorOverlay = el.querySelector('.color-overlay');
-        if (colorOverlay) gsap.to(colorOverlay, { opacity: 1, duration: 0.4 });
-
         const video = el.querySelector('video');
         if (video) {
-            video.currentTime = 0;
-            video.play().catch(e => console.log('Autoplay prevented:', e));
+            // Optimisation: Only play if paused to avoid interruptions or double-calls
+            if (video.paused) {
+                // Store promise to handle race condition with pause
+                video.playPromise = video.play().catch(e => {
+                    // Abort errors are expected if user leaves quickly
+                    if (e.name !== 'AbortError') console.log('Autoplay prevented:', e);
+                });
+            }
         }
     }
 
@@ -244,13 +247,22 @@ export class MasonryGallery {
         const overlay = el.querySelector('.card-overlay');
         if (overlay) gsap.to(overlay, { opacity: 0, duration: 0.3 });
 
-        const colorOverlay = el.querySelector('.color-overlay');
-        if (colorOverlay) gsap.to(colorOverlay, { opacity: 0, duration: 0.4 });
-
         const video = el.querySelector('video');
         if (video) {
-            video.pause();
-            video.currentTime = 0;
+            // Optimisation: Handle promise race condition
+            if (video.playPromise !== undefined) {
+                video.playPromise.then(() => {
+                    video.pause();
+                    video.currentTime = 0;
+                }).catch(() => {
+                    // If play failed, ensures we are reset
+                    video.pause();
+                    video.currentTime = 0;
+                });
+            } else {
+                video.pause();
+                video.currentTime = 0;
+            }
         }
     }
 }

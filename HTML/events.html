@@ -14,6 +14,7 @@
     <!-- CSS -->
     <link rel="stylesheet" href="../CSS/main.css">
     <link rel="stylesheet" href="../components/ui/glowing-effect.css">
+    <link rel="stylesheet" href="../components/ui/bubble-menu.css">
     <script type="importmap">
     {
       "imports": {
@@ -150,12 +151,33 @@
             <button class="filter-btn active" onclick="filterEvents('all')">All</button>
             <button class="filter-btn" onclick="filterEvents('upcoming')">Upcoming</button>
             <button class="filter-btn" onclick="filterEvents('past')">Past</button>
+            <button class="filter-btn" onclick="filterEvents('ongoing')">Ongoing</button>
         </div>
 
         <!-- Events Grid -->
         <div class="events-grid">
 
             <!-- Mentron Event -->
+            <div class="glass-card" data-category="ongoing" style="position: relative; padding-bottom: 1rem;">
+                <a href="workshop.html" style="text-decoration: none; display: block; color: inherit;">
+                    <div class="event-badge" style="background: var(--accent-secondary, #666);">Ongoing</div>
+                    <img src="../IMAGES/mentron(main)poster.png" alt="Mentron" class="event-img">
+                    <div style="padding: 0 1rem;">
+                        <div class="card-title" style="font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem;">
+                            MENTRON</div>
+                        <p style="font-size: 0.9rem; color: #ccc; margin-bottom: 1rem;">A SWaS Undertaking: Full Stack
+                            Workshop</p>
+                        <div style="display: flex; gap: 1rem; font-size: 0.8rem; color: #888;">
+                            <span>📅 Dec 3, 2025</span>
+                            <span>📍 SCTCE</span>
+                        </div>
+                    </div>
+                </a>
+                <a href="https://mentron.istesctce.in" target="_blank"
+                    style="position: absolute; top: 165px; right: 1rem; z-index: 10; background: rgba(0,0,0,0.8); border: 1px solid rgba(255,255,255,0.2); padding: 0.3rem 0.8rem; border-radius: 99px; font-size: 0.75rem; color: #fff; text-decoration: none; backdrop-filter: blur(4px); transition: all 0.3s;">
+                    Visit Us ↗
+                </a>
+            </div>
 
 
 
@@ -196,6 +218,7 @@
     </script>
     <a href="registration.html" class="floating-join-btn">Join Now</a>
     <script type="module" src="../JS/init-glowing-effect.js"></script>
+    <script type="module" src="../JS/init-bubble-menu.js"></script>
 </body>
 
 </html>

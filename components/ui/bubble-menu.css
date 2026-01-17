@@ -1,0 +1,215 @@
+/* Bubble Menu CSS - Adapted for Vanilla JS */
+.bubble-menu {
+    position: fixed;
+    /* Changed from absolute to fixed to follow scroll */
+    left: 0;
+    right: 0;
+    top: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0 2rem;
+    pointer-events: none;
+    z-index: 20000;
+    /* Above existing mobile header (which is 10000) */
+}
+
+/* Hide by default on desktop if needed, or controlled by JS media query check */
+@media (min-width: 900px) {
+    .bubble-menu {
+        display: none !important;
+    }
+}
+
+.bubble {
+    pointer-events: auto;
+    will-change: transform;
+    background: var(--bg-deep);
+    /* Match site bg */
+}
+
+/* Logo Bubble */
+.logo-bubble {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9999px;
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    /* glass-border */
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+    height: 4rem;
+    /* Increased from 3rem */
+    padding: 0 1.5rem;
+    /* Increased padding */
+    gap: 0.5rem;
+}
+
+.logo-content {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 120px;
+    /* Increased from 100px */
+    height: 100%;
+}
+
+.bubble-logo {
+    max-height: 70%;
+    /* Increased from 60% */
+    max-width: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+/* Toggle Bubble */
+.toggle-bubble {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+    width: 4rem;
+    /* Increased from 3rem */
+    height: 4rem;
+    /* Increased from 3rem */
+    cursor: pointer;
+    padding: 0;
+}
+
+.menu-line {
+    display: block;
+    margin: 0 auto;
+    border-radius: 2px;
+    width: 32px;
+    /* Increased from 26px */
+    height: 2px;
+    background: var(--text-main);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    transform-origin: center;
+}
+
+.menu-line.short {
+    margin-top: 6px;
+}
+
+/* Overlay */
+.bubble-menu-overlay {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    z-index: 19999;
+    /* Below toggle but above content */
+    background: rgba(3, 3, 5, 0.6);
+    /* Reduced opacity for translucency */
+    backdrop-filter: blur(16px);
+    /* Stronger blur */
+    -webkit-backdrop-filter: blur(16px);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+}
+
+/* Scroll Hide State */
+.bubble-menu {
+    transition: transform 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+.bubble-menu.hidden {
+    transform: translateY(-200%);
+    /* Move out of view */
+}
+
+.bubble-menu-overlay.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.bubble-menu-items {
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    padding-top: 120px;
+    /* Space for top header */
+}
+
+.pill-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    row-gap: 10px;
+    /* Reduced from 16px */
+    width: 100%;
+}
+
+.pill-col {
+    flex: 0 0 100%;
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    box-sizing: border-box;
+}
+
+.pill-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 50px;
+    /* Reduced from 80px */
+    padding: 1rem 0;
+    /* Reduced from 1.5rem */
+    border-radius: 9999px;
+    text-decoration: none;
+    color: var(--text-main);
+    font-family: var(--font-display);
+    font-size: clamp(1rem, 3.5vw, 1.5rem);
+    /* Further Reduced */
+    font-weight: 400;
+    line-height: 1;
+    position: relative;
+
+    /* Glassmorphism for pills */
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+
+    white-space: nowrap;
+    overflow: hidden;
+    transition: background 0.3s, color 0.3s;
+    /* Removed transform to avoid GSAP conflict */
+    transform: scale(0);
+    /* Initial state for GSAP */
+    will-change: transform, opacity;
+    /* Performance hint */
+}
+
+/* Hover effects (optional on mobile, but good for touch feedback) */
+.pill-link:active {
+    transform: scale(0.95);
+}
+
+.pill-label {
+    display: inline-block;
+    height: 1.2em;
+    line-height: 1.2;
+    transform: translateY(24px);
+    /* Initial state for GSAP */
+    opacity: 0;
+}

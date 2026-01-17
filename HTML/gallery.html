@@ -14,6 +14,15 @@
     <!-- CSS -->
     <link rel="stylesheet" href="../CSS/main.css">
     <link rel="stylesheet" href="../components/ui/glowing-effect.css">
+    <style>
+        .folder-thumb {
+            transition: transform 0.5s ease;
+        }
+
+        .glass-card:hover .folder-thumb {
+            transform: scale(1.1);
+        }
+    </style>
     <script type="importmap">
     {
       "imports": {
@@ -90,17 +99,55 @@
             <p>Capturing moments of innovation, collaboration, and excellence.</p>
         </div>
 
-        <div class="grid-cards">
-            <!-- Using grid-cards but making them image focused -->
-            <div class="glass-card reveal-text" style="padding: 0;" onclick="openModal('../IMAGES/istelogofinal.png')">
-                <img src="../IMAGES/istelogofinal.png"
-                    style="width: 100%; height: 250px; object-fit: cover; border-top-left-radius: 24px; border-top-right-radius: 24px;">
-                <div style="padding: 1.5rem;">
-                    <div class="card-title" style="font-size: 1.2rem;">Soft Launch</div>
-                    <div style="color: rgba(255, 255, 255, 0.7); margin-top: 0.5rem; font-size: 0.9rem;">
 
-                    </div>
+        <!-- ROOT GALLERY VIEW -->
+        <div id="gallery-root" class="grid-cards" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
+            <!-- Launch Event FOLDER -->
+            <div class="glass-card reveal-text"
+                style="padding: 0; display: flex; flex-direction: column; cursor: pointer; height: 400px; max-width: 300px; transition: all 0.3s ease; overflow: hidden;"
+                onclick="openFolder('launch-event')">
+
+                <!-- Thumbnail -->
+                <div style="height: 65%; width: 100%; overflow: hidden; background: #000;">
+                    <img src="../Gallery/launch%20event/WhatsApp%20Image%202026-01-17%20at%2010.47.35%20PM.jpeg"
+                        style="width: 100%; height: 100%; object-fit: cover; opacity: 0.9; transition: transform 0.5s ease;"
+                        class="folder-thumb">
                 </div>
+
+                <!-- Folder Info -->
+                <div
+                    style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 1rem; position: relative;">
+                    <div
+                        style="background: rgba(255, 255, 255, 0.05); border-radius: 50%; padding: 0.8rem; margin-bottom: 0.5rem; border: 1px solid rgba(255, 255, 255, 0.1); position: absolute; top: -24px; backdrop-filter: blur(10px);">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
+                            style="color: var(--accent-secondary);">
+                            <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z">
+                            </path>
+                        </svg>
+                    </div>
+                    <div class="card-title" style="font-size: 1.2rem; margin-top: 1rem; margin-bottom: 0.25rem;">Launch
+                        Event</div>
+                    <div
+                        style="color: rgba(255, 255, 255, 0.5); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px;">
+                        1 Video</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FOLDER VIEW: LAUNCH EVENT (Hidden by default) -->
+        <div id="folder-launch-event" style="display: none; width: 100%;">
+            <button onclick="closeFolder()"
+                style="background: transparent; border: none; color: var(--text-muted); display: flex; align-items: center; gap: 0.5rem; margin-bottom: 2rem; cursor: pointer; font-size: 1.1rem; padding: 0.5rem;">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                    <polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+                Back to Gallery
+            </button>
+            <div id="masonry-launch-container" style="width: 100%; min-height: 400px;">
+                <!-- Masonry Items will be injected here by JS -->
             </div>
         </div>
 
@@ -122,16 +169,115 @@
     <!-- LOGIC -->
     <script type="module" src="../JS/3d-background.js"></script>
     <script src="../JS/modern.js"></script>
-    <script>
-        function openModal(src) {
+    <script type="module">
+        import { MasonryGallery } from '../JS/masonry-gallery.js';
+
+        // Expose to window for inline onclicks (module scope is closed)
+        window.openModal = function (src) {
             const modal = document.getElementById('imageModal');
             const img = document.getElementById('modalImage');
             img.src = src;
             modal.style.display = 'flex';
             gsap.fromTo(img, { scale: 0.8, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3 });
         }
-        function closeModal() {
+
+        window.closeModal = function () {
             document.getElementById('imageModal').style.display = 'none';
+        }
+
+        // FOLDER LOGIC
+        window.openFolder = function (folderId) {
+            const root = document.getElementById('gallery-root');
+            const folder = document.getElementById('folder-' + folderId);
+
+            if (root && folder) {
+                // Animate out root
+                gsap.to(root, {
+                    opacity: 0,
+                    y: -20,
+                    duration: 0.3,
+                    onComplete: () => {
+                        root.style.display = 'none';
+                        folder.style.display = 'block';
+
+                        // Initialize Masonry if entering launch-event and not initialized
+                        if (folderId === 'launch-event' && !folder.dataset.masonryInitialized) {
+                            initLaunchMasonry();
+                            folder.dataset.masonryInitialized = 'true';
+                        }
+
+                        // Animate in folder
+                        gsap.fromTo(folder,
+                            { opacity: 0, y: 20 },
+                            { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }
+                        );
+                        // Refresh scroll trigger if needed
+                        ScrollTrigger.refresh();
+                    }
+                });
+            }
+        }
+
+        window.closeFolder = function () {
+            const folders = document.querySelectorAll('[id^="folder-"]');
+            const root = document.getElementById('gallery-root');
+
+            let activeFolder = null;
+            folders.forEach(f => {
+                if (f.style.display !== 'none') activeFolder = f;
+            });
+
+            if (activeFolder && root) {
+                gsap.to(activeFolder, {
+                    opacity: 0,
+                    y: 20,
+                    duration: 0.3,
+                    onComplete: () => {
+                        activeFolder.style.display = 'none';
+                        root.style.display = 'grid'; // grid-cards is display:grid
+                        gsap.fromTo(root,
+                            { opacity: 0, y: -20 },
+                            { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }
+                        );
+                        ScrollTrigger.refresh();
+                    }
+                });
+            }
+        }
+
+        function initLaunchMasonry() {
+            const container = document.getElementById('masonry-launch-container');
+            const items = [
+                {
+                    id: 'vid-1',
+                    type: 'video',
+                    src: '../Gallery/launch%20event/0116%20(1).mp4',
+                    title: 'Official Launch',
+                    height: 500
+                },
+                {
+                    id: 'img-1',
+                    type: 'image',
+                    src: '../Gallery/launch%20event/WhatsApp%20Image%202026-01-17%20at%2010.47.35%20PM.jpeg',
+                    title: 'Event Moment 1',
+                    height: 350
+                },
+                {
+                    id: 'img-2',
+                    type: 'image',
+                    src: '../Gallery/launch%20event/WhatsApp%20Image%202026-01-17%20at%2010.47.35%20PM%20(1).jpeg',
+                    title: 'Event Moment 2',
+                    height: 400
+                }
+            ];
+
+            new MasonryGallery(container, items, {
+                animateFrom: 'bottom',
+                stagger: 0.1,
+                gap: 24,
+                scaleOnHover: true,
+                colorShiftOnHover: false
+            });
         }
     </script>
     <a href="registration.html" class="floating-join-btn">Join Now</a>

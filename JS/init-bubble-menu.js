@@ -16,6 +16,7 @@ function init() {
                 { label: 'Events', href: 'events.html', bgColor: 'rgba(255, 255, 255, 0.05)', textColor: '#fff' },
                 { label: 'Execom', href: 'execom.html', bgColor: 'rgba(255, 255, 255, 0.05)', textColor: '#fff' },
                 { label: 'Forums', href: 'forums.html', bgColor: 'rgba(255, 255, 255, 0.05)', textColor: '#fff' },
+                { label: 'Sub Societies', href: 'sub-society.html', bgColor: 'rgba(255, 255, 255, 0.05)', textColor: '#fff' },
                 { label: 'Gallery', href: 'gallery.html', bgColor: 'rgba(255, 255, 255, 0.05)', textColor: '#fff' },
                 { label: 'Contact', href: 'contact.html', bgColor: 'rgba(255, 255, 255, 0.05)', textColor: '#fff' }
             ]

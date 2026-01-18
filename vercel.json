@@ -67,6 +67,10 @@
     {
       "source": "/workshop.html",
       "destination": "/HTML/workshop.html"
+    },
+    {
+      "source": "/sub-society.html",
+      "destination": "/HTML/sub-society.html"
     }
   ]
 }

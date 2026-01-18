@@ -372,6 +372,21 @@ body {
     backdrop-filter: blur(10px);
 }
 
+/* ABOUT US SPECIFIC */
+#about-us-text {
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.7;
+    font-size: 1.1rem;
+    font-weight: 400;
+    max-width: 1000px;
+}
+
+@media screen and (min-width: 901px) {
+    #about-us-text {
+        font-size: 1.35rem;
+    }
+}
+
 /* SECTIONS (Glass Cards) */
 .content-section {
     padding: 8rem 0;
@@ -400,21 +415,73 @@ body {
     border: 1px solid var(--glass-border);
     border-radius: 24px;
     padding: 2.5rem;
-    transition: border-color 0.3s;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    /* Smooth hover lift */
     position: relative;
-    /* overflow: hidden; - Removed to allow glowing border effect */
+    overflow: hidden;
+    /* Necessary for the glow isolation */
+    z-index: 1;
+    /* Ensure content is above glow if needed */
 }
 
+/* Base transparent border that will be lit up */
+/* Base transparent border that will be lit up */
 .glass-card::before {
-    content: '';
+    content: "";
     position: absolute;
     inset: 0;
-    background: radial-gradient(800px circle at var(--mouse-x) var(--mouse-y), rgba(255, 255, 255, 0.06), transparent 40%);
+    border-radius: inherit;
+    padding: 2px;
+    /* Thicker border */
+    background: radial-gradient(600px circle at var(--mouse-x) var(--mouse-y),
+            var(--accent-secondary),
+            transparent 60%);
+
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+
     opacity: 0;
-    transition: opacity 0.5s;
+    transition: opacity 0.3s ease;
     pointer-events: none;
-    /* Handled by JS mousemove usually, but keeping simple here */
+    z-index: 2;
+    /* Sit above content */
 }
+
+/* Secondary spotlight inside the card */
+.glass-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(500px circle at var(--mouse-x) var(--mouse-y),
+            rgba(0, 198, 255, 0.1),
+            transparent 40%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    z-index: 2;
+}
+
+/* Hover State */
+.glass-card:hover::before,
+.glass-card:hover::after {
+    opacity: 1;
+}
+
+/* Exclusion Class */
+.glass-card.no-glow::before,
+.glass-card.no-glow::after {
+    display: none !important;
+}
+
+/* Handled by JS mousemove usually, but keeping simple here */
+
 
 .glass-card:hover {
     border-color: rgba(255, 255, 255, 0.3);
@@ -1076,6 +1143,27 @@ body {
     display: flex;
     align-items: center;
     gap: 0.5rem;
+
+    /* Attraction Animation */
+    animation: pulse-glow 3s infinite ease-in-out;
+}
+
+@keyframes pulse-glow {
+    0% {
+        box-shadow: 0 0 0 0 rgba(0, 123, 255, 0.4);
+        transform: scale(1);
+    }
+
+    50% {
+        box-shadow: 0 0 25px 5px rgba(0, 123, 255, 0.7);
+        transform: scale(1.08);
+        border-color: rgba(0, 123, 255, 0.6);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(0, 123, 255, 0);
+        transform: scale(1);
+    }
 }
 
 .floating-join-btn::after {

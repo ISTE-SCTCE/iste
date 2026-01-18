@@ -2,9 +2,9 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-    <title>About | ISTE SCTCE</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
+    <title>Sub Society | ISTE SCTCE</title>
 
     <!-- FONTS -->
     <link
@@ -13,9 +13,7 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="../CSS/main.css">
-    <link rel="stylesheet" href="../CSS/iste-page.css">
     <link rel="stylesheet" href="../CSS/footer.css">
-    <link rel="stylesheet" href="../components/ui/bubble-menu.css">
     <script type="importmap">
     {
       "imports": {
@@ -29,21 +27,38 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <style>
+        /* Custom Layout for Single Item */
+        @media (min-width: 1200px) {
+            .grid-cards {
+                display: flex;
+                justify-content: center;
+                gap: 2rem;
+            }
+
+            .glass-card {
+                max-width: 400px;
+                width: 100%;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-    <!-- FADE OVERLAY -->
+    <!-- FADE OVERLAY (for bidirectional fade transition) -->
     <div class="page-fade-overlay"></div>
 
-    <!-- 3D BACKGROUND -->
+    <!-- 3D BACKGROUND (Same as home page) -->
     <div id="canvas-container" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;"></div>
 
     <!-- GLASS NAVIGATION -->
     <header class="glass-header">
+        <!-- Separate Logo Circle -->
         <a href="index.html" class="logo-link">
             <img src="../IMAGES/isteofficiallogo.png" alt="ISTE" class="logo-img">
         </a>
+
         <nav class="glass-nav">
             <button class="menu-toggle" aria-label="Toggle menu">
                 <span></span>
@@ -60,14 +75,14 @@
                 <a href="forums.html" class="nav-link"><img
                         src="../ICON/communities_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg"
                         alt=""><span>Forums</span></a>
-                <a href="sub-society.html" class="nav-link"><img
-                        src="../ICON/community.png"
-                        alt=""><span>Sub Societies</span></a>
+                <a href="sub-society.html" class="nav-link"><img src="../ICON/community.png" alt=""><span>Sub
+                        Societies</span></a>
                 <a href="gallery.html" class="nav-link"><img
                         src="../ICON/gallery_thumbnail_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg"
                         alt=""><span>Gallery</span></a>
                 <a href="contact.html" class="nav-link"><img
                         src="../ICON/mail_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" alt=""><span>Contact</span></a>
+                <!-- More Button (Mobile Only) -->
                 <button class="nav-link nav-more-btn" aria-label="More menu" style="border: none; cursor: pointer;">
                     <img src="../ICON/more_vert_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" alt="">
                     <span>More</span>
@@ -75,125 +90,38 @@
             </div>
             <div class="nav-pebble"></div>
         </nav>
+
+        <!-- ISTE Logo on Right -->
         <a href="index.html" class="logo-link-right">
             <img src="../IMAGES/istelogofinal.png" alt="ISTE Logo" class="logo-img-right">
         </a>
     </header>
+
     <div class="nav-overlay"></div>
 
 
-    <main class="app-container" style="padding-top: 2rem;">
+    <main class="app-container content-section">
 
-        <!-- NEW HERO -->
-        <section class="about-hero">
-            <h1 class="about-title">About ISTE</h1>
-            <p class="about-subtitle">Empowering thinkers, creators, and leaders since 1941.</p>
-        </section>
+        <div class="section-head reveal-text">
+            <h2>Sub Society</h2>
+            <p>Connect with your specialized community</p>
+        </div>
 
-        <!-- BENTO GRID -->
-        <div class="bento-grid">
+        <div class="grid-cards stagger-container" style="display: flex; justify-content: center;">
 
-            <!-- HISTORY (Wide) -->
-            <div class="bento-card span-8 history-card">
-                <span class="timeline-year">1941</span>
-                <div class="b-label">Origin Story</div>
-                <h3 class="b-title">Legacy of Excellence</h3>
-                <p class="b-text">
-                    The <strong>Indian Society for Technical Education (ISTE)</strong> is the leading national
-                    non-profit society for the welfare of the technical education system in India.
-                    Originally stemming from the <strong>Association of Principals of Technical Institutions
-                        (APTI)</strong> established in 1941, it has transformed into a massive network bridging the gap
-                    between academia, industry, and society.
-                </p>
-                <div style="margin-top: 2rem; display: flex; gap: 2rem;">
-                    <div>
-                        <div style="font-weight: 700; font-size: 1.2rem; color: #fff;">New Delhi</div>
-                        <div style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase;">
-                            Headquarters</div>
-                    </div>
-                    <div>
-                        <div style="font-weight: 700; font-size: 1.2rem; color: #fff;">1968</div>
-                        <div style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase;">Renamed to
-                            ISTE</div>
-                    </div>
+            <!-- SWaS -->
+            <a href="forum-swas.html" class="glass-card reveal-text"
+                style="text-decoration: none; color: inherit; display: block;">
+                <div
+                    style="height: 250px; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem;">
+                    <img src="../IMAGES/Swas-logo.png" alt="SWaS Logo"
+                        style="max-height: 220px; max-width: 100%; object-fit: contain;">
                 </div>
-            </div>
-
-            <!-- MISSION (Narrow) -->
-            <div class="bento-card span-4 mission-card">
-                <div>
-                    <div class="b-label">Our Mission</div>
-                    <p class="mission-text">
-                        "To formulate goals for technical education and enhance the ideals of the teaching profession."
-                    </p>
-                </div>
-            </div>
-
-            <!-- STATS ROW -->
-            <div class="bento-card span-4 stat-card">
-                <div class="stat-val"><span class="counter" data-target="130">0</span>k+</div>
-                <div class="stat-label">Faculty Members</div>
-            </div>
-            <div class="bento-card span-4 stat-card">
-                <div class="stat-val"><span class="counter" data-target="500">0</span>k+</div>
-                <div class="stat-label">Student Members</div>
-            </div>
-            <div class="bento-card span-4 stat-card">
-                <div class="stat-val"><span class="counter" data-target="3">0</span>k+</div>
-                <div class="stat-label">Institutional Members</div>
-            </div>
-
-            <!-- OBJECTIVES -->
-            <div class="bento-card span-6">
-                <div class="b-label">Core Objectives</div>
-                <h3 class="b-title">Driving Quality Education</h3>
-                <ul style="list-style: none; padding: 0; color: var(--text-muted); line-height: 1.8;">
-                    <li style="margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
-                        <span style="color: var(--accent-secondary);">•</span> Curriculum development & updates
-                    </li>
-                    <li style="margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
-                        <span style="color: var(--accent-secondary);">•</span> Teacher & Student training programs
-                    </li>
-                    <li style="margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
-                        <span style="color: var(--accent-secondary);">•</span> Industry-Institute interaction
-                    </li>
-                    <li style="margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
-                        <span style="color: var(--accent-secondary);">•</span> Research guidance & promotion
-                    </li>
-                </ul>
-            </div>
-
-            <!-- ACTIVITIES -->
-            <div class="bento-card span-6">
-                <div class="b-label">Major Activities</div>
-                <h3 class="b-title">What We Do</h3>
-                <p class="b-text">From hackathons to national conventions, ISTE provides a platform for showcasing
-                    talent.</p>
-                <div class="tags-container">
-                    <span class="glass-tag">Technical Contests</span>
-                    <span class="glass-tag">Faulty Development</span>
-                    <span class="glass-tag">Workshops</span>
-                    <span class="glass-tag">Seminars</span>
-                    <span class="glass-tag">Innovation Awards</span>
-                    <span class="glass-tag">Student Conventions</span>
-                    <span class="glass-tag">Publications</span>
-                </div>
-            </div>
-
-            <!-- COLLABORATION / FOOTER NOTE -->
-            <div class="bento-card span-12"
-                style="display: flex; flex-direction: row; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
-                <div>
-                    <h3 class="b-title" style="margin-bottom: 0.5rem;">Strategic Partners</h3>
-                    <p class="b-text" style="max-width: 600px;">
-                        Working closely with government bodies like <strong>AICTE</strong>, <strong>DST</strong>, and
-                        <strong>NBA</strong> to shape the future of technical education policy in India.
-                    </p>
-                </div>
-                <div style="opacity: 0.5; font-size: 3rem; font-weight: 800; color: #fff;">
-                    AICTE
-                </div>
-            </div>
+                <p class="card-desc">Join SWaS and help shape a vibrant, supportive student community with like-minded
+                    tech enthusiasts.</p>
+                <div style="margin-top: 1.5rem; color: var(--accent-primary); font-size: 0.9rem; font-weight: 500;">View
+                    Members &rarr;</div>
+            </a>
 
         </div>
 
@@ -262,10 +190,8 @@
     <!-- LOGIC -->
     <script type="module" src="../JS/3d-background.js"></script>
     <script src="../JS/modern.js"></script>
-    <script src="../JS/iste-animations.js"></script>
-    <script type="module" src="../JS/init-bubble-menu.js"></script>
+
     <a href="registration.html" class="floating-join-btn">Join Now</a>
-    <script src="../JS/counter-animation.js"></script>
 </body>
 
 </html>

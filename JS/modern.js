@@ -194,11 +194,42 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     document.querySelectorAll('.stagger-container').forEach(container => {
-        const items = container.querySelectorAll('.glass-card, .nav-link, li, .grid-item');
-        gsap.fromTo(items, { y: 30, opacity: 0 }, {
-            y: 0, opacity: 1, duration: 0.6, ease: "power3.out", stagger: 0.1,
-            scrollTrigger: { trigger: container, start: "top 85%" }
-        });
+        // Generic items
+        const genericItems = container.querySelectorAll('.glass-card, .nav-link, li, .grid-item');
+        if (genericItems.length > 0) {
+            gsap.fromTo(genericItems, { y: 30, opacity: 0 }, {
+                y: 0, opacity: 1, duration: 0.6, ease: "power3.out", stagger: 0.1,
+                scrollTrigger: { trigger: container, start: "top 85%" }
+            });
+        }
+
+        // Cinematic Execom Cards (Premium 3D Reveal)
+        const premiumCards = container.querySelectorAll('.pc-card-wrapper');
+        if (premiumCards.length > 0) {
+            // Set initial state to avoid FOUC and hint browser
+            gsap.set(premiumCards, { willChange: "transform, opacity" });
+
+            gsap.fromTo(premiumCards,
+                {
+                    y: 60,
+                    opacity: 0,
+                    scale: 0.9,
+                    rotationX: 10,
+                    transformOrigin: "center bottom"
+                },
+                {
+                    y: 0,
+                    opacity: 1,
+                    scale: 1,
+                    rotationX: 0,
+                    duration: 0.8,
+                    ease: "power2.out",
+                    stagger: 0.1,
+                    clearProps: "willChange,filter",
+                    scrollTrigger: { trigger: container, start: "top 85%" }
+                }
+            );
+        }
     });
 
     document.querySelectorAll('.glass-card:not(.reveal-text):not(.fade-left):not(.fade-right):not(.scale-in)').forEach((card, index) => {
@@ -208,13 +239,18 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // Glass Cards Tilt Effect (Desktop only for performance)
+    // Glass Cards Tilt & Glow Effect (Desktop only for performance)
     if (!isMobile) {
         document.querySelectorAll('.glass-card').forEach(card => {
             card.addEventListener('mousemove', (e) => {
                 const rect = card.getBoundingClientRect();
                 const x = e.clientX - rect.left;
                 const y = e.clientY - rect.top;
+
+                // Set CSS variables for the edge lighting glow
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+
                 const centerX = rect.width / 2;
                 const centerY = rect.height / 2;
                 const rotateX = ((y - centerY) / centerY) * -1.5;

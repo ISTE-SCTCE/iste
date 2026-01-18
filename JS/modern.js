@@ -328,5 +328,25 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
+    // 7. Fix for Mobile Back Button (bfcache black screen issue)
+    window.addEventListener('pageshow', (event) => {
+        // If the page is loaded from cache (back button), or just normally,
+        // we must ensure the fade overlay is gone and content is visible.
+        // We re-query elements to be safe.
+        const overlay = document.querySelector('.page-fade-overlay');
+        const content = document.querySelectorAll('.hero-content, .content-section, footer, main');
+
+        if (overlay) {
+            overlay.classList.add('fade-out');
+        }
+
+        if (content.length > 0) {
+            gsap.to(content, {
+                opacity: 1,
+                duration: 0.2, // fast recovery
+                ease: 'power2.out'
+            });
+        }
+    });
 
 });

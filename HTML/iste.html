@@ -13,7 +13,9 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="../CSS/main.css">
+    <link rel="stylesheet" href="../CSS/iste-page.css">
     <link rel="stylesheet" href="../components/ui/glowing-effect.css">
+    <link rel="stylesheet" href="../components/ui/bubble-menu.css">
     <script type="importmap">
     {
       "imports": {
@@ -31,21 +33,17 @@
 
 <body>
 
-    <!-- FADE OVERLAY (for bidirectional fade transition) -->
+    <!-- FADE OVERLAY -->
     <div class="page-fade-overlay"></div>
 
-
-
-    <!-- 3D BACKGROUND (Same as home page) -->
+    <!-- 3D BACKGROUND -->
     <div id="canvas-container" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;"></div>
 
     <!-- GLASS NAVIGATION -->
     <header class="glass-header">
-        <!-- Separate Logo Circle -->
         <a href="index.html" class="logo-link">
             <img src="../IMAGES/isteofficiallogo.png" alt="ISTE" class="logo-img">
         </a>
-
         <nav class="glass-nav">
             <button class="menu-toggle" aria-label="Toggle menu">
                 <span></span>
@@ -67,7 +65,6 @@
                         alt=""><span>Gallery</span></a>
                 <a href="contact.html" class="nav-link"><img
                         src="../ICON/mail_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" alt=""><span>Contact</span></a>
-                <!-- More Button (Mobile Only) -->
                 <button class="nav-link nav-more-btn" aria-label="More menu" style="border: none; cursor: pointer;">
                     <img src="../ICON/more_vert_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" alt="">
                     <span>More</span>
@@ -75,8 +72,6 @@
             </div>
             <div class="nav-pebble"></div>
         </nav>
-
-        <!-- ISTE Logo on Right -->
         <a href="index.html" class="logo-link-right">
             <img src="../IMAGES/istelogofinal.png" alt="ISTE Logo" class="logo-img-right">
         </a>
@@ -84,91 +79,117 @@
     <div class="nav-overlay"></div>
 
 
-    <main class="app-container content-section">
+    <main class="app-container" style="padding-top: 2rem;">
 
-        <div class="section-head reveal-text">
-            <h2>About ISTE</h2>
-            <p>Indian Society for Technical Education</p>
-        </div>
+        <!-- NEW HERO -->
+        <section class="about-hero">
+            <h1 class="about-title">About ISTE</h1>
+            <p class="about-subtitle">Empowering thinkers, creators, and leaders since 1941.</p>
+        </section>
 
-        <div class="grid-cards" style="grid-template-columns: 1fr;">
+        <!-- BENTO GRID -->
+        <div class="bento-grid">
 
-            <!-- HISTORY -->
-            <div class="glass-card reveal-text">
-                <div class="card-title">History & Mission</div>
-                <p class="card-desc">
-                    The <strong>Indian Society for Technical Education (ISTE)</strong> is a national, professional,
-                    non-profit organization of educators in engineering and technology. It originated as the
-                    <strong>Association of Principals of Technical Institutions (APTI)</strong> in <strong>1941</strong>
-                    at Delhi Polytechnic and was renamed ISTE on <strong>21 May 1968</strong>, expanding its scope to
-                    include all stakeholders in technical education. Headquartered in <strong>New Delhi</strong>, ISTE
-                    is dedicated to improving the quality and standards of technical education in India.
+            <!-- HISTORY (Wide) -->
+            <div class="bento-card span-8 history-card">
+                <span class="timeline-year">1941</span>
+                <div class="b-label">Origin Story</div>
+                <h3 class="b-title">Legacy of Excellence</h3>
+                <p class="b-text">
+                    The <strong>Indian Society for Technical Education (ISTE)</strong> is the leading national
+                    non-profit society for the welfare of the technical education system in India.
+                    Originally stemming from the <strong>Association of Principals of Technical Institutions
+                        (APTI)</strong> established in 1941, it has transformed into a massive network bridging the gap
+                    between academia, industry, and society.
                 </p>
+                <div style="margin-top: 2rem; display: flex; gap: 2rem;">
+                    <div>
+                        <div style="font-weight: 700; font-size: 1.2rem; color: #fff;">New Delhi</div>
+                        <div style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase;">
+                            Headquarters</div>
+                    </div>
+                    <div>
+                        <div style="font-weight: 700; font-size: 1.2rem; color: #fff;">1968</div>
+                        <div style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase;">Renamed to
+                            ISTE</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MISSION (Narrow) -->
+            <div class="bento-card span-4 mission-card">
+                <div>
+                    <div class="b-label">Our Mission</div>
+                    <p class="mission-text">
+                        "To formulate goals for technical education and enhance the ideals of the teaching profession."
+                    </p>
+                </div>
+            </div>
+
+            <!-- STATS ROW -->
+            <div class="bento-card span-4 stat-card">
+                <div class="stat-val"><span class="counter" data-target="130">0</span>k+</div>
+                <div class="stat-label">Faculty Members</div>
+            </div>
+            <div class="bento-card span-4 stat-card">
+                <div class="stat-val"><span class="counter" data-target="500">0</span>k+</div>
+                <div class="stat-label">Student Members</div>
+            </div>
+            <div class="bento-card span-4 stat-card">
+                <div class="stat-val"><span class="counter" data-target="3">0</span>k+</div>
+                <div class="stat-label">Institutional Members</div>
             </div>
 
             <!-- OBJECTIVES -->
-            <div class="glass-card reveal-text">
-                <div class="card-title">Objectives</div>
-                <p class="card-desc">
-                    Its main objectives include formulating goals for technical education, developing effective
-                    teachers, updating curricula, promoting research, and strengthening industry–institution–society
-                    relationships. ISTE strives to enhance professional ideals among teachers and foster personality
-                    development among students.
-                </p>
-            </div>
-
-            <!-- STATS -->
-            <div class="grid-cards" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;">
-                <div class="glass-card reveal-text" style="text-align: center;">
-                    <div style="font-size: 2.5rem; font-weight: 700; color: var(--accent-primary);"><span
-                            class="counter" data-target="100">0</span>k+</div>
-                    <div style="color: var(--glass-text-dim);">Faculty Members</div>
-                </div>
-                <div class="glass-card reveal-text" style="text-align: center;">
-                    <div style="font-size: 2.5rem; font-weight: 700; color: var(--accent-primary);"><span
-                            class="counter" data-target="500">0</span>k+</div>
-                    <div style="color: var(--glass-text-dim);">Student Members</div>
-                </div>
-                <div class="glass-card reveal-text" style="text-align: center;">
-                    <div style="font-size: 2.5rem; font-weight: 700; color: var(--accent-primary);"><span
-                            class="counter" data-target="2">0</span>k+</div>
-                    <div style="color: var(--glass-text-dim);">Chapters</div>
-                </div>
+            <div class="bento-card span-6">
+                <div class="b-label">Core Objectives</div>
+                <h3 class="b-title">Driving Quality Education</h3>
+                <ul style="list-style: none; padding: 0; color: var(--text-muted); line-height: 1.8;">
+                    <li style="margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
+                        <span style="color: var(--accent-secondary);">•</span> Curriculum development & updates
+                    </li>
+                    <li style="margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
+                        <span style="color: var(--accent-secondary);">•</span> Teacher & Student training programs
+                    </li>
+                    <li style="margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
+                        <span style="color: var(--accent-secondary);">•</span> Industry-Institute interaction
+                    </li>
+                    <li style="margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
+                        <span style="color: var(--accent-secondary);">•</span> Research guidance & promotion
+                    </li>
+                </ul>
             </div>
 
             <!-- ACTIVITIES -->
-            <div class="glass-card reveal-text">
-                <div class="card-title">Major Activities</div>
-                <div class="grid-cards"
-                    style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 1rem;">
-                    <div class="glass-tag">Faculty Development</div>
-                    <div class="glass-tag">Seminars & Workshops</div>
-                    <div class="glass-tag">Student Conventions</div>
-                    <div class="glass-tag">Technical Contests</div>
-                    <div class="glass-tag">Curriculum Innovation</div>
-                    <div class="glass-tag">Industry Collaboration</div>
-                    <div class="glass-tag">Awards & Scholarships</div>
+            <div class="bento-card span-6">
+                <div class="b-label">Major Activities</div>
+                <h3 class="b-title">What We Do</h3>
+                <p class="b-text">From hackathons to national conventions, ISTE provides a platform for showcasing
+                    talent.</p>
+                <div class="tags-container">
+                    <span class="glass-tag">Technical Contests</span>
+                    <span class="glass-tag">Faulty Development</span>
+                    <span class="glass-tag">Workshops</span>
+                    <span class="glass-tag">Seminars</span>
+                    <span class="glass-tag">Innovation Awards</span>
+                    <span class="glass-tag">Student Conventions</span>
+                    <span class="glass-tag">Publications</span>
                 </div>
             </div>
 
-            <!-- COLLABORATION -->
-            <div class="glass-card reveal-text">
-                <div class="card-title">Collaboration & Impact</div>
-                <p class="card-desc">
-                    Working closely with <strong>AICTE</strong>, <strong>NBA</strong>, and other government bodies, ISTE
-                    plays a vital role in policy-making and academic reform. It provides a platform for teachers and
-                    students to exchange ideas, enhance skills, and adapt to emerging technologies such as
-                    <strong>AI</strong>, <strong>IoT</strong>, and <strong>data science</strong>.
-                </p>
-            </div>
-
-            <!-- LEGACY -->
-            <div class="glass-card reveal-text" style="border-color: var(--accent-primary);">
-                <div class="card-title" style="text-align: center;">Legacy</div>
-                <p class="card-desc" style="text-align: center;">
-                    In essence, ISTE is the <strong>oldest and largest professional body</strong> advancing technical
-                    education in India through innovation, collaboration, and continuous improvement.
-                </p>
+            <!-- COLLABORATION / FOOTER NOTE -->
+            <div class="bento-card span-12"
+                style="display: flex; flex-direction: row; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
+                <div>
+                    <h3 class="b-title" style="margin-bottom: 0.5rem;">Strategic Partners</h3>
+                    <p class="b-text" style="max-width: 600px;">
+                        Working closely with government bodies like <strong>AICTE</strong>, <strong>DST</strong>, and
+                        <strong>NBA</strong> to shape the future of technical education policy in India.
+                    </p>
+                </div>
+                <div style="opacity: 0.5; font-size: 3rem; font-weight: 800; color: #fff;">
+                    AICTE
+                </div>
             </div>
 
         </div>
@@ -183,6 +204,8 @@
     <!-- LOGIC -->
     <script type="module" src="../JS/3d-background.js"></script>
     <script src="../JS/modern.js"></script>
+    <script src="../JS/iste-animations.js"></script>
+    <script type="module" src="../JS/init-bubble-menu.js"></script>
     <a href="registration.html" class="floating-join-btn">Join Now</a>
     <script type="module" src="../JS/init-glowing-effect.js"></script>
     <script src="../JS/counter-animation.js"></script>

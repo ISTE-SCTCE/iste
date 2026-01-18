@@ -1,0 +1,218 @@
+/* ISTE PAGE SPECIFIC STYLES */
+
+/* Hero Section override */
+.about-hero {
+    min-height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    padding-top: 100px;
+    /* Account for fixed header */
+}
+
+.about-title {
+    font-size: clamp(3rem, 10vw, 8rem);
+    font-weight: 800;
+    line-height: 0.9;
+    letter-spacing: -0.02em;
+    background: linear-gradient(to bottom, #fff, #888);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 1rem;
+    opacity: 0;
+}
+
+.about-subtitle {
+    font-size: clamp(1rem, 2vw, 1.5rem);
+    color: var(--text-muted);
+    max-width: 600px;
+    margin: 0 auto;
+    opacity: 0;
+}
+
+/* BENTO GRID LAYOUT */
+.bento-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-auto-rows: minmax(200px, auto);
+    gap: 1.5rem;
+    max-width: 1400px;
+    margin: 4rem auto;
+    padding: 0 1rem;
+}
+
+/* Base Bento Card */
+.bento-card {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 24px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    transition: border-color 0.4s ease, box-shadow 0.4s ease;
+    position: relative;
+    overflow: hidden;
+    will-change: transform, opacity;
+}
+
+.bento-card:hover {
+    border-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+/* Card Variants (Spans) */
+.span-12 {
+    grid-column: span 12;
+}
+
+.span-8 {
+    grid-column: span 8;
+}
+
+.span-6 {
+    grid-column: span 6;
+}
+
+.span-4 {
+    grid-column: span 4;
+}
+
+.span-3 {
+    grid-column: span 3;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+
+    .span-8,
+    .span-4 {
+        grid-column: span 6;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .span-8,
+    .span-6,
+    .span-4,
+    .span-3 {
+        grid-column: span 12;
+    }
+}
+
+/* Content Styles */
+.b-label {
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    color: var(--accent-secondary);
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.b-title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    line-height: 1.1;
+    font-family: var(--font-display);
+}
+
+.b-text {
+    color: var(--text-muted);
+    line-height: 1.6;
+    font-size: 1.05rem;
+}
+
+/* Specific Card Styles */
+
+/* History timeline look */
+.history-card {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.01));
+}
+
+.timeline-year {
+    font-size: 4rem;
+    font-weight: 800;
+    color: rgba(255, 255, 255, 0.1);
+    position: absolute;
+    right: -10px;
+    top: -20px;
+}
+
+/* Mission Highlight */
+.mission-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-color: var(--accent-primary);
+}
+
+.mission-text {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #fff;
+}
+
+/* Stats */
+.stat-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.stat-val {
+    font-size: 3.5rem;
+    font-weight: 800;
+    background: linear-gradient(to right, #fff, #ccc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.stat-label {
+    margin-top: 0.5rem;
+    color: var(--text-muted);
+}
+
+/* Activities Tags */
+.tags-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin-top: 1rem;
+}
+
+.glass-tag {
+    padding: 0.5rem 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50px;
+    font-size: 0.9rem;
+    color: #fff;
+    transition: background 0.3s;
+}
+
+.glass-tag:hover {
+    background: var(--accent-primary);
+}
+
+/* Animations */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
